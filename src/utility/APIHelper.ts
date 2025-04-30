@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { ErrorResponse } from 'src/schame/ErrorResponse'
-import { useEnvironmentStore } from 'src/stores/useEnvironmentStore'
-import { useErrorCodeStore } from 'src/stores/useErrorCodeStore'
+import { ErrorResponse } from '../schame/ErrorResponse'
+import { useEnvironmentStore } from '../stores/useEnvironmentStore'
+import { useErrorCodeStore } from '../stores/useErrorCodeStore'
 
 interface RetryConfig {
   maxRetries: number

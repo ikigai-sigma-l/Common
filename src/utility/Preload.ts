@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { useLoadingStore } from 'src/stores/useLoadingStore'
+import { useLoadingStore } from '../stores/useLoadingStore'
 
 export class Preload {
   private loader: Promise<void> | null = null

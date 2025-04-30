@@ -1,4 +1,4 @@
-import { useLoadingStore } from "src/stores/useLoadingStore"
+import { useLoadingStore } from "../../stores/useLoadingStore"
 
 function LoadingBar() {
     const { percent } = useLoadingStore()

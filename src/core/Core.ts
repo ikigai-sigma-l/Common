@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { View, Layout, Style } from './View'
-import { Utils } from 'src/utility/Utils'
+import { Utils } from '../utility/Utils'
 
 abstract class Core {
   public container: HTMLElement | null = null

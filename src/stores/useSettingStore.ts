@@ -1,4 +1,4 @@
-import { Observable } from 'src/observable/Observable'
+import { Observable } from '../observable/Observable'
 
 export enum ReelSpeed {
     Regular = 0,

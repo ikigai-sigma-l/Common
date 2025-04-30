@@ -1,4 +1,4 @@
-import { Observable } from 'src/observable/Observable'
+import { Observable } from '../observable/Observable'
 
 
 export class EnvironmentStore {

@@ -1,4 +1,4 @@
-import { language } from 'src/utility/Language'
+import { language } from '../utility/Language'
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { DEV_USER, GAME_CODE, GAME_CURRENCY, LAUNCH_SIGNATURE, LAUNCH_URL, GAME_LANGUAGE } from 'src/types/common'
+import { DEV_USER, GAME_CODE, GAME_CURRENCY, LAUNCH_SIGNATURE, LAUNCH_URL, GAME_LANGUAGE } from '../types/common'
 
 interface LaunchResponseData {
     url: string
