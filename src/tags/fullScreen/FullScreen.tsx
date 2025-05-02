@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Utils, DEVICE_TYPE } from "src/utility/Utils"
+import { Utils, DEVICE_TYPE } from "../../utility/Utils"
 
 interface FullscreenDocument extends Document {
   webkitFullscreenElement?: Element | null
