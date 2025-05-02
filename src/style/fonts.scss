@@ -1,0 +1,46 @@
+@mixin text-header {
+    background: var(--beige-linear-main, linear-gradient(180deg, #FED569 0%, #D9AF45 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin text-button {
+    background: var(--beige-linear-main, linear-gradient(180deg, #FFFFFF 0%, #DED9D0 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-header {
+    @include text-header;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.text-button {
+    @include text-button;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+.text-shadow {
+    color: black;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.27), 1px 3px 4px rgba(0, 0, 0, 0.27);
+
+    &.isMobile {
+        text-shadow: 1.749px 1.749px 3.499px rgba(0, 0, 0, 0.27), 1.749px 5.248px 6.997px rgba(0, 0, 0, 0.27);
+    }
+}
+
+.text-inner-shadow {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    text-shadow: 0px 0px 1px white;
+}
+  

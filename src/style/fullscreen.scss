@@ -1,0 +1,65 @@
+.android-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    visibility: visible;
+  }
+  
+  #fullscreen.show {
+    visibility: visible;
+  }
+  #fullscreen.hide {
+    visibility: hidden;
+  }
+  #fullscreen.showZIndex {
+    z-index: 9999;
+  }
+  #fullscreen.hideZIndex {
+    z-index: -1;
+  }
+  #fullscreenContainer {
+    width: 100%;
+    height: 100%;
+    /* background-color: #0B101B;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.45) inset;
+      background-image: url("../loader/progressbarBg.png"); */
+  
+    display: none;
+  }
+  #fullscreenContainer.hide {
+    display: none;
+  }
+  
+  #fullscreen-text {
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+  
+    display: none;
+  }
+  
+  .fs-scrollup {
+    z-index: 32760;
+    position: absolute;
+    top: -500px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10000000px;
+    background-color: #151a25;
+    scrollbar-width: none;
+    /* touch-action: pan-y; */
+    display: block;
+  }
+  
+  .fs-scrollup.fs-touched {
+    opacity: 0;
+    pointer-events: none;
+  }

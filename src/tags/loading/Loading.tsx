@@ -18,7 +18,7 @@ function LoadingPage() {
         <div id="LoadingPage">
                 <div id="Loader">
                 <div id="LoaderIconContainer">
-                    <img id="LoaderIcon" src="loader/icon.svg" alt="" />
+                    <img id="LoaderIcon" src="common/loader/icon.svg" alt="" />
                 </div>
                 <LoadingBar />
             </div>
