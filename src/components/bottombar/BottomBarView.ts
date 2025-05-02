@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
-import { View, Layout, Style } from 'src/core/View';
-import { Gradient } from 'src/utility/GradientUtility';
+import { View, Layout, Style } from '../../core/View';
+import { Gradient } from '../../utility/GradientUtility';
 
 export class BottomBarView extends View {
 

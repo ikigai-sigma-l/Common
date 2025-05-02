@@ -1,4 +1,4 @@
-import { View, Layout, Style } from 'src/core/View';
+import { View, Layout, Style } from '../../core/View';
 import { BottomBarPrefab } from '../bottombar/BottomBarPrefab';
 /*
 import { SpinButtonPrefab } from '../buttons/spin/SpinButtonPrefab';

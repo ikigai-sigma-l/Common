@@ -1,4 +1,3 @@
-import { UnSubscribes } from "src/observable/Observable";
 import { ControlPanelView } from "./ControlPanelView"
 import { ControlPanelViewModel } from "./ControlPanelViewModel"
 
