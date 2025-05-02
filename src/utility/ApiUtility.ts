@@ -4,7 +4,7 @@ import { APIHelper } from './APIHelper';
 import { useActiveResultStore } from 'src/stores/useActiveResultStore';
 import { useGameUiStore } from 'src/stores/useGameUiStore';
 
-const API_ROUTE = {
+export const API_ROUTE = {
     ACTIVATE: 'v2/exp/session/activate',
     BET: 'v2/exp/play/bet',
     ACTION: 'v2/exp/play/action',
