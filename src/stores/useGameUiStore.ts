@@ -18,6 +18,7 @@ export class GameUiStore {
   autoSpinLeft = Observable<number>(0)
   freeSpinLeft = Observable<number>(0)
   spinState = Observable<number>(SpinState.None)
+  spinAnim = Observable<boolean>(false)
   balance = Observable<number>(1200)
   lastActTime = Observable<number>(0)
   isAudioCompleted = Observable<boolean>(false)

@@ -1,19 +1,19 @@
 import * as PIXI from 'pixi.js'
 import { View } from '../../../core/View'
-import { ButtonView } from '../ButtonView'
 import { SpinMaskButtonView } from './SpinMaskButtonView'
 import { SpinButtonViewModel } from "./SpinButtonViewModel"
 import { SpinMaskButtonViewModel } from './SpinMaskButtonViewModel'
+import { SpinButtonView } from './SpinButtonView'
 
 export class SpinButtonPrefab {
 
-    private view: ButtonView | null = null
+    private view: SpinButtonView | null = null
     private spinMask: SpinMaskButtonView | null = null
     private viewModel: SpinButtonViewModel | null = null
     private spinMaskViewModel: SpinMaskButtonViewModel | null = null
 
     public initial() {
-        this.view = new ButtonView()
+        this.view = new SpinButtonView()
         this.view.initial()
 
         this.spinMask = new SpinMaskButtonView()
@@ -61,6 +61,18 @@ export class SpinButtonPrefab {
         if (background) {
             background.width = width
             background.height = height
+        }
+
+        const arrow = this.view?.getObject('arrow') as PIXI.Sprite
+        if (arrow) {
+            arrow.width = width
+            arrow.height = height
+        }
+
+        const icon = this.view?.getObject('icon') as PIXI.Sprite
+        if (icon) {
+            icon.width = width
+            icon.height = height
         }
         
         const turboMask = this.spinMask?.getObject('turboMask') as PIXI.Sprite

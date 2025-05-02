@@ -1,7 +1,7 @@
 import { View, Layout, Style } from '../../core/View';
 import { BottomBarPrefab } from '../bottombar/BottomBarPrefab';
 
-//import { SpinButtonPrefab } from '../buttons/spin/SpinButtonPrefab';
+import { SpinButtonPrefab } from '../buttons/spin/SpinButtonPrefab';
 import { SpeedButtonPrefab } from '../buttons/speed/SpeedButtonPrefab';
 import { AutoButtonPrefab } from '../buttons/auto/AutoButtonPrefab';
 import { BuySpinButtonPrefab } from '../buttons/buySpin/BuySpinButtonPrefab';
@@ -15,7 +15,7 @@ import { StopButtonPrefab } from '../buttons/stop/StopButtonPrefab';
 export class ControlPanelView extends View {
 
     private bottomBar: BottomBarPrefab | null = null
-    //private spinButton: SpinButtonPrefab | null = null
+    private spinButton: SpinButtonPrefab | null = null
     //private stopButton: StopButtonPrefab | null = null
     private speedButton: SpeedButtonPrefab | null = null
     private autoButton: AutoButtonPrefab | null = null
@@ -33,7 +33,7 @@ export class ControlPanelView extends View {
 
     public release(): void {
         this.bottomBar?.release()
-        //this.spinButton?.release()
+        this.spinButton?.release()
         //this.stopButton?.release()
         this.speedButton?.release()
         this.autoButton?.release()
@@ -49,7 +49,7 @@ export class ControlPanelView extends View {
 
     public onDraw(layout: Layout) {
         this.drawBottomBar(layout)
-        //this.drawSpinButton(layout)
+        this.drawSpinButton(layout)
         //this.drawStopButton(layout)
         this.drawSpeedButton(layout)
         this.drawAutoButton(layout)
@@ -63,7 +63,7 @@ export class ControlPanelView extends View {
 
     protected createObjects() {
         this.createBottomBar()
-        //this.createSpinButton()
+        this.createSpinButton()
         //this.createStopButton()
         this.createSpeedButton()
         this.createAutoButton()
@@ -91,14 +91,14 @@ export class ControlPanelView extends View {
 
         this.addPrefab(this.bottomBar.getViews())
     }
-/*
+
     private createSpinButton() {
         this.spinButton = new SpinButtonPrefab()
         this.spinButton.initial()
 
         this.addPrefab(this.spinButton.getViews())
     }
-
+/*
     private createStopButton() {
         this.stopButton = new StopButtonPrefab()
         this.stopButton.initial()
@@ -168,7 +168,7 @@ export class ControlPanelView extends View {
         })
         this.bottomBar?.position(0, layout.height)
     }
-/*
+
     private drawSpinButton(layout: Layout): void {
         switch(layout.style)
         {
@@ -189,7 +189,7 @@ export class ControlPanelView extends View {
         }
         this.spinButton?.getViews()?.forEach((view) => view.onDraw(layout))
     }
-
+/*
     private drawStopButton(layout: Layout): void {
         switch(layout.style)
         {
