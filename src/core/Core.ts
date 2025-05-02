@@ -135,7 +135,7 @@ abstract class Core {
     if (this.app?.renderer) this.app.renderer.resize(containerWidth, containerHeight, devicePixelRatio)
     if (this.root) {
       this.root.position.set((containerWidth - width) * 0.5, (containerHeight - height) * 0.5)
-      this.root.scale.set(aspectRatio)
+      this.root.scale.set(aspectRatio / devicePixelRatio)
     }
   }
 
