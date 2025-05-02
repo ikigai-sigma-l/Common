@@ -45,7 +45,7 @@ export class BetSelectorView extends View {
         const sprite = this.createSprite('close')
         if (!sprite) return
 
-        sprite.texture = Assets.get('closeButton.png')
+        sprite.texture = Assets.get('close_normal.png')
         sprite.width = 96
         sprite.height = 96
         sprite.anchor.set(1,0)
