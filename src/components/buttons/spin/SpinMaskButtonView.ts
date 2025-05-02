@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Assets } from 'pixi.js';
-import { View, Layout, Style } from 'src/core/View';
+import { View, Layout, Style } from '../../../core/View';
 
 export class SpinMaskButtonView extends View {
 

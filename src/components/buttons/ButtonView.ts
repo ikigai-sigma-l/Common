@@ -11,7 +11,7 @@ export const getStateName = (state: ButtonState) => {
     switch(state)
     {
         case ButtonState.Normal: return 'normal' 
-        case ButtonState.Focus: return 'hover'
+        case ButtonState.Focus: return 'focus'
         case ButtonState.Push: return 'push'
         case ButtonState.Disable: return 'disable'
     }
