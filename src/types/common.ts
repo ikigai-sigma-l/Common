@@ -11,6 +11,7 @@ export const GAME_LANGUAGE = import.meta.env.VITE_GAME_LANGUAGE
 export const SHOW_FPS = import.meta.env.VITE_SHOW_FPS
 export const GAME_WIDTH = import.meta.env.VITE_GAME_WIDTH ?? 1920
 export const GAME_HEIGHT = import.meta.env.VITE_GAME_HEIGHT ?? 1080
+export const LANG_DOMAIN = import.meta.env.VITE_LANG_DOMAIN
 export const TOKEN = params.get('token') ?? ''
 export const DOMAIN = params.get('cb') ?? ''
 
