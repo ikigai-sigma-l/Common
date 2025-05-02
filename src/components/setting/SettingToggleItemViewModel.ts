@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { Observable, UnSubscribes } from "src/observable/Observable";
+import { Observable, UnSubscribes } from "../../observable/Observable";
 import { SettingToggleItemView } from './SettingToggleItemView';
 import { SettingToggleItemModel } from './SettingToggleItemModel';
 

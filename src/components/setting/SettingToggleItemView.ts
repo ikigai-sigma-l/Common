@@ -1,4 +1,4 @@
-import { View, Layout, Style } from 'src/core/View';
+import { View, Layout, Style } from '../../core/View';
 import { Assets, Container, FillGradient, Graphics, Sprite, Text, TextStyle } from 'pixi.js';
 import { TogglePrefab } from '../toggle/TogglePrefab';
 
