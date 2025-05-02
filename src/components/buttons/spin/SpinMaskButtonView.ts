@@ -25,7 +25,7 @@ export class SpinMaskButtonView extends View {
         const turboMask = this.createSprite(`turboMask`)
         if (!turboMask) return
 
-        turboMask.texture = Assets.get('turboMask.png')
+        turboMask.texture = Assets.get('spinButton/turboMask.png')
         turboMask.anchor.set(0.5)
         turboMask.position.set(0)
         turboMask.eventMode = 'none'

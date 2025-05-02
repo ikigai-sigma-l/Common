@@ -1,6 +1,6 @@
 {
   "frames": {
-    "buttonFree.png": {
+    "spinButton/buttonFree.png": {
       "frame": {
         "x": 8,
         "y": 8,
@@ -24,7 +24,7 @@
         "y": 0.5
       }
     },
-    "turboMask.png": {
+    "spinButton/turboMask.png": {
       "frame": {
         "x": 8,
         "y": 468,
@@ -48,7 +48,7 @@
         "y": 0.5
       }
     },
-    "arrow_focus.png": {
+    "spinButton/arrow_focus.png": {
       "frame": {
         "x": 8,
         "y": 876,
@@ -72,7 +72,7 @@
         "y": 0.5
       }
     },
-    "arrow_push.png": {
+    "spinButton/arrow_push.png": {
       "frame": {
         "x": 168,
         "y": 876,
@@ -96,7 +96,7 @@
         "y": 0.5
       }
     },
-    "buttonAuto.png": {
+    "spinButton/buttonAuto.png": {
       "frame": {
         "x": 291,
         "y": 468,
@@ -120,7 +120,7 @@
         "y": 0.5
       }
     },
-    "icon_normal.png": {
+    "spinButton/icon_normal.png": {
       "frame": {
         "x": 291,
         "y": 756,
@@ -144,7 +144,7 @@
         "y": 0.5
       }
     },
-    "arrow_run.png": {
+    "spinButton/arrow_run.png": {
       "frame": {
         "x": 328,
         "y": 836,
@@ -168,7 +168,7 @@
         "y": 0.5
       }
     },
-    "icon_disable.png": {
+    "spinButton/icon_disable.png": {
       "frame": {
         "x": 358,
         "y": 756,
@@ -192,7 +192,7 @@
         "y": 0.5
       }
     },
-    "icon_focus.png": {
+    "spinButton/icon_focus.png": {
       "frame": {
         "x": 424,
         "y": 756,
@@ -216,7 +216,7 @@
         "y": 0.5
       }
     },
-    "icon_push.png": {
+    "spinButton/icon_push.png": {
       "frame": {
         "x": 487,
         "y": 756,
@@ -240,7 +240,7 @@
         "y": 0.5
       }
     },
-    "arrow_normal.png": {
+    "spinButton/arrow_normal.png": {
       "frame": {
         "x": 488,
         "y": 834,
@@ -264,7 +264,7 @@
         "y": 0.5
       }
     },
-    "stop_disable.png": {
+    "spinButton/stop_disable.png": {
       "frame": {
         "x": 550,
         "y": 756,
@@ -288,7 +288,7 @@
         "y": 0.5
       }
     },
-    "stop_normal.png": {
+    "spinButton/stop_normal.png": {
       "frame": {
         "x": 622,
         "y": 756,
@@ -312,7 +312,7 @@
         "y": 0.5
       }
     },
-    "stop_focus.png": {
+    "spinButton/stop_focus.png": {
       "frame": {
         "x": 694,
         "y": 756,
@@ -336,7 +336,7 @@
         "y": 0.5
       }
     },
-    "arrow_disable.png": {
+    "spinButton/arrow_disable.png": {
       "frame": {
         "x": 650,
         "y": 828,
@@ -360,7 +360,7 @@
         "y": 0.5
       }
     },
-    "spin_disable.png": {
+    "spinButton/spin_disable.png": {
       "frame": {
         "x": 811,
         "y": 8,
@@ -384,7 +384,7 @@
         "y": 0.5
       }
     },
-    "spin_focus.png": {
+    "spinButton/spin_focus.png": {
       "frame": {
         "x": 811,
         "y": 224,
@@ -408,7 +408,7 @@
         "y": 0.5
       }
     },
-    "spin_run.png": {
+    "spinButton/spin_run.png": {
       "frame": {
         "x": 811,
         "y": 440,
@@ -432,7 +432,7 @@
         "y": 0.5
       }
     },
-    "stop_push.png": {
+    "spinButton/stop_push.png": {
       "frame": {
         "x": 579,
         "y": 656,
@@ -456,7 +456,7 @@
         "y": 0.5
       }
     },
-    "spin_normal.png": {
+    "spinButton/spin_normal.png": {
       "frame": {
         "x": 811,
         "y": 224,
@@ -480,7 +480,7 @@
         "y": 0.5
       }
     },
-    "spin_push.png": {
+    "spinButton/spin_push.png": {
       "frame": {
         "x": 811,
         "y": 224,
@@ -504,7 +504,7 @@
         "y": 0.5
       }
     },
-    "stop_run.png": {
+    "spinButton/stop_run.png": {
       "frame": {
         "x": 694,
         "y": 756,
