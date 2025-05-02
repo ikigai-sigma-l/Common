@@ -13,7 +13,7 @@ class LangLoader {
             const url = `${domain}info.json`
             return APIHelper.get<InfoSettingData>(url)
         }).then((resp) => {
-            console.log(JSON.stringify(resp.data.language))
+            //console.log(JSON.stringify(resp.data.language))
             const table = new Map<string, GameLanguageSetting>(Object.entries(resp.data.language))
             const setting = table.get(GAME_LANGUAGE)
             if (!setting) return Promise.reject(new Error(`unused language ${GAME_LANGUAGE}`))
@@ -45,7 +45,7 @@ class LangLoader {
                 const url = `${domain}${GAME_LANGUAGE}/${GAME_CODE}.${GAME_LANGUAGE}.${setting.version}.json`
                 return APIHelper.get<LanguageStrings>(url)
             }).then((resp) => {
-                console.log(JSON.stringify(resp.data))
+                //console.log(JSON.stringify(resp.data))
                 language.initial(resp.data)
             })
         })

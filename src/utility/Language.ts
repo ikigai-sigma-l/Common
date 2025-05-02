@@ -1,7 +1,7 @@
 export type LanguageStrings = Record<string, string>
 
 class Language {
-    data: LanguageStrings | null = null
+    private data: LanguageStrings | null = null
 
     public initial(data: LanguageStrings) {
         this.data = data

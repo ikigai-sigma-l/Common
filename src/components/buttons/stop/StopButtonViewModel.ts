@@ -82,6 +82,6 @@ export class StopButtonViewModel {
     }
 
     private onSpinUp() {
-        // call custom event here
+        // TO DO: call custom event here
     }
 }

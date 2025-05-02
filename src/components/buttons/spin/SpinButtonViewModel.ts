@@ -125,6 +125,6 @@ export class SpinButtonViewModel {
 
     private sendBet() {
         this.holdTime = 0
-        // cal custom event here
+        // TODO: cal custom event here
     }
 }
