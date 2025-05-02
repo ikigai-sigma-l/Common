@@ -27,7 +27,7 @@ export class InfoButtonViewModel {
                 (cur) => {
                     const background = view.getObject('background') as PIXI.Sprite
                     if (!background) return
-                    background.texture = PIXI.Assets.get(`info-${getStateName(cur)}.png`)
+                    background.texture = PIXI.Assets.get(`info_${getStateName(cur)}.png`)
                 }
             ),
             this.registerMouseHoverEvent(view),

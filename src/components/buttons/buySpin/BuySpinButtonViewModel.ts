@@ -29,7 +29,7 @@ export class BuySpinButtonViewModel {
                 (cur) => {
                     const background = view.getObject('background') as PIXI.Sprite
                     if (!background) return
-                    background.texture = PIXI.Assets.get(`buySpin-${getStateName(cur)}.png`)
+                    background.texture = PIXI.Assets.get(`buySpin_${getStateName(cur)}.png`)
                 }
             ),
             useGameUiStore.spinState.subscribe(

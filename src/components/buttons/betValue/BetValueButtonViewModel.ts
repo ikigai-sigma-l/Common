@@ -28,7 +28,7 @@ export class BetValueButtonViewModel {
                 (cur) => {
                     const background = view.getObject('background') as PIXI.Sprite
                     if (!background) return
-                    background.texture = PIXI.Assets.get(`betValue-${getStateName(cur)}.png`)
+                    background.texture = PIXI.Assets.get(`betValue_${getStateName(cur)}.png`)
                 }
             ),
             useGameUiStore.spinState.subscribe(

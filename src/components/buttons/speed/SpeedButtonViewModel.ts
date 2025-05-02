@@ -129,6 +129,6 @@ export class SpeedButtonViewModel {
 
     private setSkin(view: ButtonView, speed: ReelSpeed, state: ButtonState) {
         const background = view.getObject('background') as PIXI.Sprite
-        if (background) background.texture = PIXI.Assets.get(`${this.getSpeedLv(speed)}-${getStateName(state)}.png`)
+        if (background) background.texture = PIXI.Assets.get(`${this.getSpeedLv(speed)}_${getStateName(state)}.png`)
     }
 }

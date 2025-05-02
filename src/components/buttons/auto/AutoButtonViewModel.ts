@@ -114,7 +114,7 @@ export class AutoButtonViewModel {
     private setSkin(view: ButtonView, name: string, state: ButtonState) {
         if (!name ) return
         const background = view.getObject('background') as PIXI.Sprite
-        if (background) background.texture = PIXI.Assets.get(`${name}-${getStateName(state)}.png`)
+        if (background) background.texture = PIXI.Assets.get(`${name}_${getStateName(state)}.png`)
     }
 
     private onButtonDown() {

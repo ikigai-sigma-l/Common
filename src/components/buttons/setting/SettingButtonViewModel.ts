@@ -27,7 +27,7 @@ export class SettingButtonViewModel {
                 (cur) => {
                     const background = view.getObject('background') as PIXI.Sprite
                     if (!background) return
-                    background.texture = PIXI.Assets.get(`setting-${getStateName(cur)}.png`)
+                    background.texture = PIXI.Assets.get(`setting_${getStateName(cur)}.png`)
                 }
             ),
             this.registerMouseHoverEvent(view),
