@@ -189,7 +189,7 @@ export class ControlPanelView extends View {
         }
         this.spinButton?.getViews()?.forEach((view) => view.onDraw(layout))
     }
-*/
+
     private drawStopButton(layout: Layout): void {
         switch(layout.style)
         {
@@ -207,7 +207,7 @@ export class ControlPanelView extends View {
         }
         this.stopButton?.getViews()?.forEach((view) => view.onDraw(layout))
     }
-
+*/
     private drawSpeedButton(layout: Layout): void {
         switch(layout.style)
         {
