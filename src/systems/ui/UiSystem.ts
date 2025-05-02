@@ -3,10 +3,10 @@ import { View, Register } from "../../core/View";
 import { UnSubscribes } from "../../observable/Observable";
 import { ControlPanelPrefab } from "../../components/controlPanel/ControlPanelPrefab";
 import { Utils } from "../../utility/Utils";
-import { SpinState, useGameUiStore } from "src/stores/useGameUiStore";
+import { SpinState, useGameUiStore } from "../../stores/useGameUiStore";
 //import { InfoPanelPrefab } from "../../components/InfoPanel/InfoPanelPrefab";
-//import { SpinState, useGameStore } from "src/stores/useGameStore";
-//import { TogglePrefab } from "src/component/toggle/TogglePrefab";
+//import { SpinState, useGameStore } from "../../stores/useGameStore";
+//import { TogglePrefab } from "../../component/toggle/TogglePrefab";
 
 export class UiSystem extends System {
     private unSubscribes: UnSubscribes = null
