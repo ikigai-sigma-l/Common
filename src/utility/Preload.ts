@@ -50,3 +50,8 @@ export class Preload {
     return handler
   }
 }
+
+export const commonResources = [
+  'common/buttons/buttons.json',
+  'common/buttons/spinButton.json',
+]
