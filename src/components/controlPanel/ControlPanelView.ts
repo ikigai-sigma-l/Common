@@ -1,7 +1,7 @@
 import { View, Layout, Style } from '../../core/View';
 import { BottomBarPrefab } from '../bottombar/BottomBarPrefab';
-/*
-import { SpinButtonPrefab } from '../buttons/spin/SpinButtonPrefab';
+
+//import { SpinButtonPrefab } from '../buttons/spin/SpinButtonPrefab';
 import { SpeedButtonPrefab } from '../buttons/speed/SpeedButtonPrefab';
 import { AutoButtonPrefab } from '../buttons/auto/AutoButtonPrefab';
 import { BuySpinButtonPrefab } from '../buttons/buySpin/BuySpinButtonPrefab';
@@ -10,16 +10,12 @@ import { SoundButtonPrefab } from '../buttons/sound/SoundButtonPrefab';
 import { InfoButtonPrefab } from '../buttons/information/InfoButtonPrefab';
 import { BetValueButtonPrefab } from '../buttons/betValue/BetValueButtonPrefab';
 import { FullScreenButtonPrefab } from '../buttons/fullScreen/FullScreenPrefab';
-import { BuyFreeSpinButtonPrefab } from '../buttons/buyFreeSpin/BuyFreeSpinButtonPrefab';
-import { BuyDoubleChanceButtonPrefab } from '../buttons/buyDoubleChance/BuyDoubleChanceButtonPrefab';
 import { StopButtonPrefab } from '../buttons/stop/StopButtonPrefab';
-*/
 
 export class ControlPanelView extends View {
 
     private bottomBar: BottomBarPrefab | null = null
-    /*
-    private spinButton: SpinButtonPrefab | null = null
+    //private spinButton: SpinButtonPrefab | null = null
     private stopButton: StopButtonPrefab | null = null
     private speedButton: SpeedButtonPrefab | null = null
     private autoButton: AutoButtonPrefab | null = null
@@ -29,9 +25,7 @@ export class ControlPanelView extends View {
     private infoButton: InfoButtonPrefab | null = null
     private betValueButton: BetValueButtonPrefab | null = null
     private fullScreenButton: FullScreenButtonPrefab | null = null
-    private buyFreeSpinButton: BuyFreeSpinButtonPrefab | null = null
-    private buyDoubleChanceButton: BuyDoubleChanceButtonPrefab | null = null
-    */
+
 
     public initial(): void {
         this.createObjects()
@@ -39,8 +33,7 @@ export class ControlPanelView extends View {
 
     public release(): void {
         this.bottomBar?.release()
-        /*
-        this.spinButton?.release()
+        //this.spinButton?.release()
         this.speedButton?.release()
         this.autoButton?.release()
         this.buySpinButton?.release()
@@ -49,17 +42,13 @@ export class ControlPanelView extends View {
         this.infoButton?.release()
         this.betValueButton?.release()
         this.fullScreenButton?.release()
-        this.buyFreeSpinButton?.release()
-        this.buyDoubleChanceButton?.release()
-        */
         
         super.release()
     }
 
     public onDraw(layout: Layout) {
         this.drawBottomBar(layout)
-        /*
-        this.drawSpinButton(layout)
+        //this.drawSpinButton(layout)
         this.drawStopButton(layout)
         this.drawSpeedButton(layout)
         this.drawAutoButton(layout)
@@ -69,15 +58,11 @@ export class ControlPanelView extends View {
         this.drawInfoButton(layout)
         this.drawBetValueButton(layout)
         this.drawFullScreenButton(layout)
-        this.drawBuyFreeSpinButton(layout)
-        this.drawBuyDoubleChanceButton(layout)
-        */
     }
 
     protected createObjects() {
         this.createBottomBar()
-        /*
-        this.createSpinButton()
+        //this.createSpinButton()
         this.createStopButton()
         this.createSpeedButton()
         this.createAutoButton()
@@ -87,9 +72,6 @@ export class ControlPanelView extends View {
         this.createInfoButton()
         this.createBetValueButton()
         this.createFullScreenButton()
-        this.createBuyFreeSpinButton()
-        this.createBuyDoubleChanceButton()
-        */
     }
 
     private addPrefab(views: View[]) {
@@ -115,7 +97,7 @@ export class ControlPanelView extends View {
 
         this.addPrefab(this.spinButton.getViews())
     }
-
+*/
     private createStopButton() {
         this.stopButton = new StopButtonPrefab()
         this.stopButton.initial()
@@ -179,20 +161,6 @@ export class ControlPanelView extends View {
         this.addPrefab(this.fullScreenButton.getViews())
     }
 
-    private createBuyFreeSpinButton() {
-        this.buyFreeSpinButton = new BuyFreeSpinButtonPrefab()
-        this.buyFreeSpinButton.initial()
-
-        this.addPrefab(this.buyFreeSpinButton.getViews())
-    }
-
-    private createBuyDoubleChanceButton() {
-        this.buyDoubleChanceButton = new BuyDoubleChanceButtonPrefab()
-        this.buyDoubleChanceButton.initial()
-
-        this.addPrefab(this.buyDoubleChanceButton.getViews())
-    }
-*/
     private drawBottomBar(layout: Layout) {
         this.bottomBar?.getViews().forEach((view) => {
             view.onDraw(layout)
@@ -220,7 +188,7 @@ export class ControlPanelView extends View {
         }
         this.spinButton?.getViews()?.forEach((view) => view.onDraw(layout))
     }
-
+*/
     private drawStopButton(layout: Layout): void {
         switch(layout.style)
         {
@@ -397,45 +365,4 @@ export class ControlPanelView extends View {
                 break
         }
     }
-
-    private drawBuyFreeSpinButton(layout: Layout): void {
-        switch(layout.style)
-        {
-            case Style.DesktopHorizon:
-                this.buyFreeSpinButton?.size(180, 180)
-                this.buyFreeSpinButton?.position(220, 300)
-                break
-
-            case Style.MobileHorizon:
-                this.buyFreeSpinButton?.size(180, 180)
-                this.buyFreeSpinButton?.position(220, 300)
-                break
-
-            case Style.Portrait:
-                this.buyFreeSpinButton?.size(480, 140)
-                this.buyFreeSpinButton?.position(810, 1324)
-                break
-        }
-    }
-
-    private drawBuyDoubleChanceButton(layout: Layout): void {
-        switch(layout.style)
-        {
-            case Style.DesktopHorizon:
-                this.buyDoubleChanceButton?.size(180, 180)
-                this.buyDoubleChanceButton?.position(220, 540)
-                break
-
-            case Style.MobileHorizon:
-                this.buyDoubleChanceButton?.size(180, 180)
-                this.buyDoubleChanceButton?.position(220, 540)
-                break
-
-            case Style.Portrait:
-                this.buyDoubleChanceButton?.size(480, 140)
-                this.buyDoubleChanceButton?.position(260, 1324)
-                break
-        }
-    }
-*/
 }
