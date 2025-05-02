@@ -1,3 +1,4 @@
+import { GamePhaseType } from '../schame/BetResponse'
 import { Observable } from '../observable/Observable'
 
 
@@ -13,6 +14,7 @@ export enum SpinState {
 
 export class GameUiStore {
   betValue = Observable<number>(4)
+  gamePhase = Observable<GamePhaseType>('regular')
   autoSpinLeft = Observable<number>(0)
   freeSpinLeft = Observable<number>(0)
   spinState = Observable<number>(SpinState.None)
