@@ -1,8 +1,8 @@
-import { ActivateResponse, ActivateResponseData } from 'src/schame/ActiveResponse';
+import { ActivateResponse, ActivateResponseData } from '../schame/ActiveResponse';
 import { Utils } from './Utils';
 import { APIHelper } from './APIHelper';
-import { useActiveResultStore } from 'src/stores/useActiveResultStore';
-import { useGameUiStore } from 'src/stores/useGameUiStore';
+import { useActiveResultStore } from '../stores/useActiveResultStore';
+import { useGameUiStore } from '../stores/useGameUiStore';
 
 export const API_ROUTE = {
     ACTIVATE: 'v2/exp/session/activate',
