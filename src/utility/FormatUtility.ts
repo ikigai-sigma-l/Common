@@ -1,9 +1,11 @@
-export const formatCurrency = (val: number, decimals: number) => {
-    return val.toFixed(decimals)
+import { useActiveResultStore } from "../stores/useActiveResultStore"
+
+export const formatCurrency = (val: number) => {
+    return val.toFixed(useActiveResultStore.getState().getCurrency().decimals)
     //return Math.abs(val).toLocaleString('en-us', { style: 'currency', currency: 'USD' })
 }
 
-export const formatNumber = (value: number|string, decimals: number, withFixed = false) => {
+export const formatNumber = (value: number|string, withFixed = false) => {
   if(typeof value === 'string') {
     value = parseFloat(value)
   }
@@ -14,7 +16,7 @@ export const formatNumber = (value: number|string, decimals: number, withFixed =
 
   const formattedValue = Number.isInteger(value) && !withFixed
     ? value.toString()
-    : value.toFixed(decimals);
+    : value.toFixed(useActiveResultStore.getState().getCurrency().decimals);
 
   return value >= 1000
     ? formatWithThousandSeparation(formattedValue)
