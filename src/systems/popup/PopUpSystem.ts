@@ -1,4 +1,4 @@
-//import { AutoPlayPrefab } from "../../components/autoplay/AutoPlayPrefab";
+import { AutoPlayPrefab } from "../../components/autoplay/AutoPlayPrefab";
 import { BetSelectorPrefab } from "../../components/betSelector/BetSelectorPrefab";
 import { BlockPrefab } from "../../components/block/BlockPrefab";
 import { SettingPrefab } from "../../components/setting/SettingPrefab";
@@ -11,7 +11,7 @@ export class PopUpSystem extends System {
     private unSubscribes: UnSubscribes = null
 
     private block: BlockPrefab | null = null
-    //private autoplay: AutoPlayPrefab | null = null
+    private autoplay: AutoPlayPrefab | null = null
     private betSelector: BetSelectorPrefab | null = null
     private setting: SettingPrefab | null = null
 
@@ -19,7 +19,7 @@ export class PopUpSystem extends System {
         const views: View[] = []
 
         views.push(...this.createBlock())
-        //views.push(...this.createAutoPlay())
+        views.push(...this.createAutoPlay())
         views.push(...this.createBetSelector())
         views.push(...this.createSetting())
         
@@ -33,8 +33,8 @@ export class PopUpSystem extends System {
 
         this.betSelector?.release()
         this.betSelector = null
-        //this.autoplay?.release()
-        //this.autoplay = null
+        this.autoplay?.release()
+        this.autoplay = null
         this.block?.release()
         this.block = null
     }
@@ -57,14 +57,14 @@ export class PopUpSystem extends System {
 
         return this.block.getViews()
     }
-/*
+
     private createAutoPlay() {
         this.autoplay = new AutoPlayPrefab()
         this.autoplay.initial()
 
         return this.autoplay.getViews()
     }
-*/
+
     private createBetSelector() {
         this.betSelector = new BetSelectorPrefab()
         this.betSelector.initial()

@@ -1,18 +1,16 @@
 import * as PIXI from 'pixi.js'
 import { View, Layout, Style } from '../../core/View';
-//import { AnnouncementPrefab } from '../Information/announcement/AnnouncementPrefab';
 import { TimerPrefab } from '../timer/TimerPrefab';
-//import { AutoSpinLeftPrefab } from '../Information/autoSpinLeft/AutoSpinLeftPrefab';
-//import { OverallMultiplierPrefab } from '../Information/overallMultiplier/OverallMultiplierPrefab';
+//import { AnnouncementPrefab } from '../Information/announcement/AnnouncementPrefab';
 //import { WalletPrefab } from '../Information/wallet/WalletPrefab';
+import { AutoSpinLeftPrefab } from '../Information/autoSpinLeft/AutoSpinLeftPrefab';
 
 export class InfoPanelView extends View {
 
     private timer : TimerPrefab | null = null
     //private announce: AnnouncementPrefab | null = null
     //private wallet: WalletPrefab | null = null
-    //private autoLeft: AutoSpinLeftPrefab | null = null
-    //private overallMultiplier: OverallMultiplierPrefab | null = null
+    private autoLeft: AutoSpinLeftPrefab | null = null
 
     public initial(): void {
         this.createObjects()
@@ -28,13 +26,9 @@ export class InfoPanelView extends View {
 
         this.wallet?.release()
         this.wallet = null
-
+*/
         this.autoLeft?.release()
         this.autoLeft = null
-
-        this.overallMultiplier?.release()
-        this.overallMultiplier = null
-        */
 
         super.release()
     }
@@ -44,9 +38,8 @@ export class InfoPanelView extends View {
         /*
         this.drawAnnounce(layout)
         this.drawWallet(layout)
-        this.drawAutoSpinLeft(layout)
-        this.drawOverallMultiplier(layout)
         */
+        this.drawAutoSpinLeft(layout)
     }
 
     private createObjects() {
@@ -54,9 +47,8 @@ export class InfoPanelView extends View {
         /*
         this.createAnnounce()
         this.createWallet()
-        this.createAutoSpinLeft()
-        this.createOverallMultiplier()
         */
+        this.createAutoSpinLeft()
     } 
 
     private addPrefab(views: View[]) {
@@ -89,7 +81,7 @@ export class InfoPanelView extends View {
 
         this.addPrefab(this.wallet.getViews())
     }
-
+*/
     private createAutoSpinLeft() {
         this.autoLeft = new AutoSpinLeftPrefab()
         this.autoLeft.initial()
@@ -97,13 +89,6 @@ export class InfoPanelView extends View {
         this.addPrefab(this.autoLeft.getViews())
     }
 
-    private createOverallMultiplier() {
-        this.overallMultiplier = new OverallMultiplierPrefab()
-        this.overallMultiplier.initial()
-
-        this.addPrefab(this.overallMultiplier.getViews())
-    }
-        */
     private drawTimer(layout: Layout) {
         this.timer?.position(54, 34)
         this.timer?.getViews().forEach((view) => view.onDraw(layout))
@@ -148,7 +133,7 @@ export class InfoPanelView extends View {
 
         this.wallet?.getViews().forEach((view) => view.onDraw(layout))
     }
-
+*/
     private drawAutoSpinLeft(layout: Layout) {
 
         switch(layout.style)
@@ -170,16 +155,4 @@ export class InfoPanelView extends View {
             view.onDraw(layout)
         })
     }
-
-    private drawOverallMultiplier(layout: Layout) {
-        const isPortrait = layout.style == Style.Portrait
-
-        if (isPortrait) {
-            this.overallMultiplier?.position(540, 184)
-        }
-        else {
-            this.overallMultiplier?.position(200, 680)
-        }
-    }
-        */
 }
