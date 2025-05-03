@@ -15,6 +15,8 @@ export class AutoButtonViewModel {
 
     private flag = Observable<number>(0)
 
+    private interactive = Observable<boolean>(true)
+
     private skinName = Observable<string>('')
 
     private unScribes: UnSubscribes = null
@@ -35,12 +37,17 @@ export class AutoButtonViewModel {
         this.unScribes = [
             useGameUiStore.spinState.subscribe(
                 (cur) => {
-                    let flag = this.flag.get()
-                    const isAutoSpin = this.isAutoSpin()
-                    if (isAutoSpin) flag |= AutoButtonFlag.AutoPlaying
-                    else flag &= ~AutoButtonFlag.AutoPlaying
-
-                    this.flag.set(flag)
+                    this.updateFlag()
+                    this.updateInteractive(cur)
+                }
+            ),
+            this.interactive.subscribe(
+                    (cur) => {
+                    const background = view.getObject('background') as PIXI.Sprite
+                    if (!background) return
+                    background.interactive = cur
+                    if (cur == false) this.state.set(ButtonState.Disable)
+                    else this.state.set(ButtonState.Normal)
                 }
             ),
             usePopUpStore.current.subscribe(
@@ -109,6 +116,19 @@ export class AutoButtonViewModel {
     private isAutoSpin() {
         const state = useGameUiStore.spinState.get()
         return (state & SpinState.AutoSpin) != SpinState.None
+    }
+
+    private updateFlag() {
+        let flag = this.flag.get()
+        const isAutoSpin = this.isAutoSpin()
+        if (isAutoSpin) flag |= AutoButtonFlag.AutoPlaying
+        else flag &= ~AutoButtonFlag.AutoPlaying
+
+        this.flag.set(flag)
+    }
+
+    private updateInteractive(state: SpinState) {
+        this.interactive.set(state == SpinState.None)
     }
 
     private setSkin(view: ButtonView, name: string, state: ButtonState) {

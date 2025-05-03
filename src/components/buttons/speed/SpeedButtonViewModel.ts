@@ -38,9 +38,9 @@ export class SpeedButtonViewModel {
                     this.setSkin(view, cur, this.state.get())
                 }
             ),
-            useGameUiStore.gamePhase.subscribe(
+            useGameUiStore.spinState.subscribe(
                 (cur) => {
-                    this.isInteractive.set(cur === 'regular')
+                    this.isInteractive.set(cur === SpinState.None)
                 }
             ),
             this.isInteractive.subscribe(
