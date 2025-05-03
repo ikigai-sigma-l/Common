@@ -137,22 +137,5 @@ export class SpinButtonViewModel {
     private sendBet() {
         this.holdTime = 0
         CustomEventUtility.dispatch(CustomEventList.SendBet)
-
-        // test
-        useGameUiStore.stopEnable.set(false)
-        useGameUiStore.spinAnim.set(SpinAnimState.Run)
-        useGameUiStore.spinState.set(useGameUiStore.spinState.get() | SpinState.NormalSpin)
-        setTimeout(() => {
-            useGameUiStore.spinAnim.set(SpinAnimState.Stop)
-        }, 3000);
-
-        setTimeout(() => {
-            useGameUiStore.stopEnable.set(true)
-        }, 2000);
-
-        setTimeout(() => {
-            useGameUiStore.spinAnim.set(SpinAnimState.Idle)
-            useGameUiStore.spinState.set(useGameUiStore.spinState.get() & ~SpinState.NormalSpin)
-        }, 5000);
     }
 }
