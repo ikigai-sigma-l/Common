@@ -106,6 +106,7 @@ export class StopButtonViewModel {
     }
 
     private onSpinUp() {
+        console.log(`[Sigma] click stop`)
         CustomEventUtility.dispatch(CustomEventList.StopSpinImmediately)
     }
 }
