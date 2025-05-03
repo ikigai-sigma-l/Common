@@ -32,8 +32,11 @@ export class SpinButtonViewModel {
         this.unScribes = [
             useGameUiStore.spinState.subscribe(
                 (cur) => {
+                    const container = view.getContainer()
+                    if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin)) == SpinState.None)
+
                     const icon = view.getObject('icon') as PIXI.Sprite
-                    if (icon) icon.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.NormalSpin)) == SpinState.None)
+                    if (icon) icon.visible = ((cur & (SpinState.NormalSpin)) == SpinState.None)
 
                     this.isIdle = cur === SpinState.None
                 }
