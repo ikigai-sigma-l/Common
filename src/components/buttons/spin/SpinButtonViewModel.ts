@@ -138,5 +138,13 @@ export class SpinButtonViewModel {
         // test
         useGameUiStore.spinAnim.set(SpinAnimState.Run)
         useGameUiStore.spinState.set(useGameUiStore.spinState.get() | SpinState.NormalSpin)
+        setTimeout(() => {
+            useGameUiStore.spinAnim.set(SpinAnimState.Stop)
+        }, 3000);
+
+        setTimeout(() => {
+            useGameUiStore.spinAnim.set(SpinAnimState.Idle)
+            useGameUiStore.spinState.set(useGameUiStore.spinState.get() & ~SpinState.NormalSpin)
+        }, 5000);
     }
 }
