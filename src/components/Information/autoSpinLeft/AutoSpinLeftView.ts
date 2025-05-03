@@ -47,7 +47,6 @@ export class AutoSpinLeftView extends View {
                         fontWeight: 'bold',
                         align: 'center',
                         fill: '#ffffff',
-                        letterSpacing: -8,
                     })
     }
 
@@ -63,7 +62,6 @@ export class AutoSpinLeftView extends View {
                         fontWeight: 'bold',
                         align: 'center',
                         fill: '#ffffff',
-                        letterSpacing: -8,
                     })
     }
 
