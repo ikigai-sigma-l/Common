@@ -116,7 +116,6 @@ export class SpinButtonViewModel {
     }
 
     private onSpinUp() {
-        console.log(`[Sigma] click spin`)
         if (!this.isIdle) return
         if (usePopUpStore.current.get() == PopUpState.AutoPlay) {
             useGameUiStore.autoSpinLeft.set(useSettingStore.autoCount.get())

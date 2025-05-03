@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Observable, UnSubscribes } from "../../../observable/Observable";
-import { SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
+import { SpinAnimState, SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
 import { CustomEventList, CustomEventUtility } from '../../../utility/CustomEventUtility';
 import { ButtonState, ButtonView, getStateName } from '../ButtonView';
 
@@ -43,7 +43,7 @@ export class StopButtonViewModel {
             this.interactive.subscribe(
                 (cur) => {
                     const background = view.getObject('background') as PIXI.Sprite
-                    if (background) background.interactive = cur
+                    if (background) background.cursor = cur ? 'pointer' : 'none'
                 }
             ),
             useGameUiStore.stopEnable.subscribe(
@@ -59,17 +59,9 @@ export class StopButtonViewModel {
                     }
                 }
             ),
-            useGameUiStore.spinState.subscribe(
+            useGameUiStore.spinAnim.subscribe(
                 (cur) => {
-                    if ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.TurboSpin | SpinState.MiniGame)) != SpinState.None) {
-                        this.isVisible.set(false)
-                    }
-                    else if ((cur & SpinState.NormalSpin) == SpinState.None) {
-                        this.isVisible.set(false)
-                    }
-                    else {
-                        this.isVisible.set(true)
-                    }
+                    this.isVisible.set(cur === SpinAnimState.Run)
                 }
             ),
             this.isVisible.subscribe(
@@ -106,7 +98,7 @@ export class StopButtonViewModel {
     }
 
     private onSpinUp() {
-        console.log(`[Sigma] click stop`)
+        if (this.interactive.get() == false) return
         CustomEventUtility.dispatch(CustomEventList.StopSpinImmediately)
     }
 }
