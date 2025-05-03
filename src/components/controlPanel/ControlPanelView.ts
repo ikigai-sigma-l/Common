@@ -18,7 +18,7 @@ export class ControlPanelView extends View {
     private bottomBar: BottomBarPrefab | null = null
     private spinGrow: SpinGrowPrefab | null = null
     private spinButton: SpinButtonPrefab | null = null
-    //private stopButton: StopButtonPrefab | null = null
+    private stopButton: StopButtonPrefab | null = null
     private speedButton: SpeedButtonPrefab | null = null
     private autoButton: AutoButtonPrefab | null = null
     private buySpinButton: BuySpinButtonPrefab | null = null
@@ -37,7 +37,7 @@ export class ControlPanelView extends View {
         this.bottomBar?.release()
         this.spinGrow?.release()
         this.spinButton?.release()
-        //this.stopButton?.release()
+        this.stopButton?.release()
         this.speedButton?.release()
         this.autoButton?.release()
         this.buySpinButton?.release()
@@ -54,7 +54,7 @@ export class ControlPanelView extends View {
         this.drawBottomBar(layout)
         this.drawSpinGrow(layout)
         this.drawSpinButton(layout)
-        //this.drawStopButton(layout)
+        this.drawStopButton(layout)
         this.drawSpeedButton(layout)
         this.drawAutoButton(layout)
         this.drawBuySpinButton(layout)
@@ -69,7 +69,7 @@ export class ControlPanelView extends View {
         this.createBottomBar()
         this.createSpinGrow()
         this.createSpinButton()
-        //this.createStopButton()
+        this.createStopButton()
         this.createSpeedButton()
         this.createAutoButton()
         this.createBuySpinButton()
@@ -110,14 +110,14 @@ export class ControlPanelView extends View {
 
         this.addPrefab(this.spinButton.getViews())
     }
-/*
+
     private createStopButton() {
         this.stopButton = new StopButtonPrefab()
         this.stopButton.initial()
 
         this.addPrefab(this.stopButton.getViews())
     }
-*/
+
     private createSpeedButton() {
         this.speedButton = new SpeedButtonPrefab()
         this.speedButton.initial()
@@ -219,25 +219,28 @@ export class ControlPanelView extends View {
         }
         this.spinButton?.getViews()?.forEach((view) => view.onDraw(layout))
     }
-/*
+
     private drawStopButton(layout: Layout): void {
         switch(layout.style)
         {
             case Style.DesktopHorizon:
+                this.stopButton?.size(200, 200)
                 this.stopButton?.position(1508, 967 + layout.paddingY)
                 break
 
             case Style.MobileHorizon:
+                this.stopButton?.size(272, 272)
                 this.stopButton?.position(1720, 544)
                 break
 
             case Style.Portrait:
+                this.stopButton?.size(272, 272)
                 this.stopButton?.position(540, 1576)
                 break
         }
         this.stopButton?.getViews()?.forEach((view) => view.onDraw(layout))
     }
-*/
+
     private drawSpeedButton(layout: Layout): void {
         switch(layout.style)
         {

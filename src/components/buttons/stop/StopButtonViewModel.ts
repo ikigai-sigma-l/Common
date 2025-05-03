@@ -1,13 +1,18 @@
 import * as PIXI from 'pixi.js'
 import { Observable, UnSubscribes } from "../../../observable/Observable";
 import { SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
-import { StopButtonView } from './StopButtonView';
-import { useTimerStore } from '../../../stores/useTimerStore';
-import { Spine } from '@esotericsoftware/spine-pixi-v8';
+import { CustomEventList, CustomEventUtility } from '../../../utility/CustomEventUtility';
+import { ButtonState, ButtonView, getStateName } from '../ButtonView';
 
 export class StopButtonViewModel {
 
     private isVisible = Observable<boolean>(false)
+
+    private state = Observable<ButtonState>(ButtonState.Normal)
+        
+    private skinName = Observable<string>('')
+
+    private interactive = Observable<boolean>(false)
 
     private unScribes: UnSubscribes = null
 
@@ -21,10 +26,39 @@ export class StopButtonViewModel {
         this.unScribes = null
     }
 
-    public bind(view: StopButtonView) {
+    public bind(view: ButtonView) {
         this.release()
 
         this.unScribes = [
+            this.state.subscribe(
+                (cur) => {
+                    this.setSkin(view, this.skinName.get(), cur)
+                }
+            ),
+            this.skinName.subscribe(
+                (cur) => {
+                    this.setSkin(view, cur, this.state.get())
+                }
+            ),
+            this.interactive.subscribe(
+                (cur) => {
+                    const background = view.getObject('background') as PIXI.Sprite
+                    if (background) background.interactive = cur
+                }
+            ),
+            useGameUiStore.stopEnable.subscribe(
+                (cur) => {
+                    this.interactive.set(cur)
+                    if (cur) {
+                        this.skinName.set(`stop`)
+                        this.state.set(ButtonState.Normal)
+                    }
+                    else {
+                        this.skinName.set(`icon`)
+                        this.state.set(ButtonState.Disable)
+                    }
+                }
+            ),
             useGameUiStore.spinState.subscribe(
                 (cur) => {
                     if ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.TurboSpin | SpinState.MiniGame)) != SpinState.None) {
@@ -42,30 +76,14 @@ export class StopButtonViewModel {
                 (cur) => {
                     const container = view.getContainer()
                     if (container) container.visible = cur
-
-                    const spine = view.getObject('SpinGrow') as Spine
-                    if (spine) {
-                        if (cur) spine.state.setAnimation(0, 'Spin_glow_anim', false)
-                        else spine.state.setEmptyAnimation(0, 0)
-                    }
-
-                    view.getWheel()?.run(cur)
-                }
-            ),
-            useTimerStore.subscribe(
-                (cur) => {
-                    if (this.isVisible.get() == false) return
-                    const delta = cur.delta
-                    const spine = view.getObject('SpinGrow') as Spine
-                    if(spine) spine.update(delta)
                 }
             ),
             this.registerClickEvent(view),
         ]
     }
 
-    private registerClickEvent(view: StopButtonView) {
-        const sprite = view.getObject('icon') as PIXI.Sprite
+    private registerClickEvent(view: ButtonView) {
+        const sprite = view.getObject('background') as PIXI.Sprite
         if (!sprite) return () => {}
 
         sprite.on('pointerdown', this.onSpinDown.bind(this))
@@ -78,10 +96,16 @@ export class StopButtonViewModel {
         }
     }
 
+    private setSkin(view: ButtonView, name: string, state: ButtonState) {
+        if (!name ) return
+        const background = view.getObject('background') as PIXI.Sprite
+        if (background) background.texture = PIXI.Assets.get(`spinButton/${name}_${getStateName(state)}.png`)
+    }
+
     private onSpinDown() {
     }
 
     private onSpinUp() {
-        // TO DO: call custom event here
+        CustomEventUtility.dispatch(CustomEventList.StopSpinImmediately)
     }
 }

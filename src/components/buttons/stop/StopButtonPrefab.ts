@@ -1,15 +1,15 @@
 import * as PIXI from 'pixi.js'
 import { View } from '../../../core/View'
 import { StopButtonViewModel } from './StopButtonViewModel'
-import { StopButtonView } from './StopButtonView'
+import { ButtonView } from '../ButtonView'
 
 export class StopButtonPrefab {
 
-    private view: StopButtonView | null = null
+    private view: ButtonView | null = null
     private viewModel: StopButtonViewModel | null = null
 
     public initial() {
-        this.view = new StopButtonView()
+        this.view = new ButtonView()
         this.view.initial()
 
         this.viewModel = new StopButtonViewModel()
@@ -37,5 +37,13 @@ export class StopButtonPrefab {
             if (container) container.position.set(x, y)
         })
     }
+
+    public size(width: number, height: number) {
+        const background = this.view?.getObject('background') as PIXI.Sprite
+        if (!background) return
+            
+        background.width = width
+        background.height = height
+    } 
 }
 

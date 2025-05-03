@@ -32,8 +32,8 @@ export class SpinButtonViewModel {
         this.unScribes = [
             useGameUiStore.spinState.subscribe(
                 (cur) => {
-                    //const container = view.getContainer()
-                    //if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.NormalSpin)) == SpinState.None)
+                    const icon = view.getObject('icon') as PIXI.Sprite
+                    if (icon) icon.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.NormalSpin)) == SpinState.None)
 
                     this.isIdle = cur === SpinState.None
                 }
@@ -136,11 +136,16 @@ export class SpinButtonViewModel {
         CustomEventUtility.dispatch(CustomEventList.SendBet)
 
         // test
+        useGameUiStore.stopEnable.set(false)
         useGameUiStore.spinAnim.set(SpinAnimState.Run)
         useGameUiStore.spinState.set(useGameUiStore.spinState.get() | SpinState.NormalSpin)
         setTimeout(() => {
             useGameUiStore.spinAnim.set(SpinAnimState.Stop)
         }, 3000);
+
+        setTimeout(() => {
+            useGameUiStore.stopEnable.set(true)
+        }, 4000);
 
         setTimeout(() => {
             useGameUiStore.spinAnim.set(SpinAnimState.Idle)

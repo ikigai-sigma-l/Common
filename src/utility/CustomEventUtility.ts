@@ -1,6 +1,7 @@
 export enum CustomEventList {
     SendBet = 'SendBet',
-    PlaySpinGrow = 'PlaySpinGrow'
+    PlaySpinGrow = 'PlaySpinGrow',
+    StopSpinImmediately = 'StopSpinImmediately'
 }
 
 export class CustomEventUtility {
