@@ -12,13 +12,19 @@ export enum SpinState {
   TurboSpin = 1 << 5,
 }
 
+export enum SpinAnimState {
+  Idle,
+  Run,
+  Stop
+}
+
 export class GameUiStore {
   betValue = Observable<number>(4)
   gamePhase = Observable<GamePhaseType>('regular')
   autoSpinLeft = Observable<number>(0)
   freeSpinLeft = Observable<number>(0)
   spinState = Observable<number>(SpinState.None)
-  spinAnim = Observable<boolean>(false)
+  spinAnim = Observable<SpinAnimState>(SpinAnimState.Idle)
   balance = Observable<number>(1200)
   lastActTime = Observable<number>(0)
   isAudioCompleted = Observable<boolean>(false)

@@ -4,11 +4,14 @@ import { SpinMaskButtonView } from './SpinMaskButtonView'
 import { SpinButtonViewModel } from "./SpinButtonViewModel"
 import { SpinMaskButtonViewModel } from './SpinMaskButtonViewModel'
 import { SpinButtonView } from './SpinButtonView'
+import { SpinButtonModel } from './SpinButtonModel'
+import { SpinButtonAnimViewModel } from './SpinButtonAnimViewModel'
 
 export class SpinButtonPrefab {
-
+    private model: SpinButtonModel = new SpinButtonModel()
     private view: SpinButtonView | null = null
     private spinMask: SpinMaskButtonView | null = null
+    private spinAnim: SpinButtonAnimViewModel | null = null
     private viewModel: SpinButtonViewModel | null = null
     private spinMaskViewModel: SpinMaskButtonViewModel | null = null
 
@@ -19,9 +22,13 @@ export class SpinButtonPrefab {
         this.spinMask = new SpinMaskButtonView()
         this.spinMask.initial()
 
+        this.spinAnim = new SpinButtonAnimViewModel()
+        this.spinAnim.initial()
+        this.spinAnim.bind(this.model, this.view)
+
         this.viewModel = new SpinButtonViewModel()
         this.viewModel.initial()
-        this.viewModel.bind(this.view)
+        this.viewModel.bind(this.model, this.view)
 
         this.spinMaskViewModel = new SpinMaskButtonViewModel()
         this.spinMaskViewModel.initial()

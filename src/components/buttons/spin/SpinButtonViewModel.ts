@@ -4,11 +4,10 @@ import { SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
 import { PopUpState, usePopUpStore } from '../../../stores/usePopUpStore';
 import { useSettingStore } from '../../../stores/useSettingStore';
 import { useTimerStore } from '../../../stores/useTimerStore';
-import { SpinButtonView, SpinButtonState, getStateName } from './SpinButtonView';
+import { SpinButtonView} from './SpinButtonView';
+import { SpinButtonModel, SpinButtonState } from './SpinButtonModel';
 
 export class SpinButtonViewModel {
-
-    private state = Observable<SpinButtonState>(SpinButtonState.Normal)
 
     private unScribes: UnSubscribes = null
 
@@ -26,7 +25,7 @@ export class SpinButtonViewModel {
         this.unScribes = null
     }
 
-    public bind(view: SpinButtonView) {
+    public bind(model: SpinButtonModel, view: SpinButtonView) {
         this.release()
 
         this.unScribes = [
@@ -38,7 +37,7 @@ export class SpinButtonViewModel {
                     this.isIdle = cur === SpinState.None
                 }
             ),
-            this.state.subscribe(
+            model.state.subscribe(
                 (cur) => {
                     this.setSkin(view, cur)
                 }
@@ -52,21 +51,21 @@ export class SpinButtonViewModel {
                     }
                 },
             ),
-            this.registerMouseHoverEvent(view),
+            this.registerMouseHoverEvent(model, view),
             this.registerClickEvent(view),
         ]
     }
 
-    private registerMouseHoverEvent(view: SpinButtonView) {
+    private registerMouseHoverEvent(model: SpinButtonModel, view: SpinButtonView) {
         const background = view.getObject('background') as PIXI.Sprite
         if (!background) return () => {}
 
         background.on('mouseover', () => {
-            this.state.set(SpinButtonState.Focus)
+            model.state.set(SpinButtonState.Focus)
         })
 
         background.on('mouseout', () => {
-            this.state.set(SpinButtonState.Normal)
+            model.state.set(SpinButtonState.Normal)
         })
 
         return () => {
@@ -89,15 +88,25 @@ export class SpinButtonViewModel {
         }
     }
 
+    private getStateName(state: SpinButtonState) {
+        switch(state)
+        {
+            case SpinButtonState.Normal: return 'normal' 
+            case SpinButtonState.Focus: return 'focus'
+            case SpinButtonState.Push: return 'push'
+            case SpinButtonState.Disable: return 'disable'
+        }
+    }
+
     private setSkin(view: SpinButtonView, state: SpinButtonState) {
         const background = view.getObject('background') as PIXI.Sprite
-        if (background) background.texture = PIXI.Assets.get(`spinButton/spin_${getStateName(state)}.png`)
+        if (background) background.texture = PIXI.Assets.get(`spinButton/spin_${this.getStateName(state)}.png`)
 
         const arrow = view.getObject('arrow') as PIXI.Sprite
-        if (arrow) arrow.texture = PIXI.Assets.get(`spinButton/arrow_${getStateName(state)}.png`)
+        if (arrow) arrow.texture = PIXI.Assets.get(`spinButton/arrow_${this.getStateName(state)}.png`)
 
         const icon = view.getObject('icon') as PIXI.Sprite
-        if (icon) icon.texture = PIXI.Assets.get(`spinButton/icon_${getStateName(state)}.png`)
+        if (icon) icon.texture = PIXI.Assets.get(`spinButton/icon_${this.getStateName(state)}.png`)
     }
 
     private onSpinDown() {

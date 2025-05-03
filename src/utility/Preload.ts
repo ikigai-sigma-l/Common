@@ -54,4 +54,6 @@ export class Preload {
 export const commonResources = [
   'common/buttons/buttons.json',
   'common/buttons/spinButton.json',
+  'common/spine/spinButtonGlow/Spin_glow_anim.atlas',
+  'common/spine/spinButtonGlow/Spin_glow_anim.json',
 ]
