@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import { Observable, UnSubscribes } from "../../../observable/Observable";
 import { AutoSpinLeftView } from "./AutoSpinLeftView";
 import { SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
-import { language } from 'src/utility/Language';
+import { language } from '../../../utility/Language';
 import { useActiveResultStore } from '../../../stores/useActiveResultStore';
 
 export class AutoSpinLeftViewModel {
