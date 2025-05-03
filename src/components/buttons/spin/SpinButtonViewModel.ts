@@ -6,7 +6,7 @@ import { useSettingStore } from '../../../stores/useSettingStore';
 import { useTimerStore } from '../../../stores/useTimerStore';
 import { SpinButtonView} from './SpinButtonView';
 import { SpinButtonModel, SpinButtonState } from './SpinButtonModel';
-import { CustomEventList, CustomEventUtility } from 'src/utility/CustomEventUtility';
+import { CustomEventList, CustomEventUtility } from '../../../utility/CustomEventUtility';
 
 export class SpinButtonViewModel {
 
