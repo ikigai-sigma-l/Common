@@ -25,6 +25,7 @@ export class SpinGrowView extends View {
 
         spine.position.set(0)
         spine.state.timeScale = 1.35
+        spine.visible = false
     }
 
     private drawGrowSpine(style: Style) {

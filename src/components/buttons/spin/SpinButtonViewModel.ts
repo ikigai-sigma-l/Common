@@ -32,8 +32,8 @@ export class SpinButtonViewModel {
         this.unScribes = [
             useGameUiStore.spinState.subscribe(
                 (cur) => {
-                    const container = view.getContainer()
-                    if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.NormalSpin)) == SpinState.None)
+                    //const container = view.getContainer()
+                    //if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin | SpinState.NormalSpin)) == SpinState.None)
 
                     this.isIdle = cur === SpinState.None
                 }
