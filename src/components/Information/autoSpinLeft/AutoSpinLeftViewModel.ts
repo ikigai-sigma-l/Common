@@ -51,7 +51,7 @@ export class AutoSpinLeftViewModel {
 
     private setLayout(view: AutoSpinLeftView, isFreeGame: boolean) {
         const background = view.getObject('background') as PIXI.Sprite
-        if (background) background.texture  = PIXI.Assets.get(isFreeGame ? 'spinButton//buttonFree.png' : 'spinButton//buttonAuto.png')
+        if (background) background.texture  = PIXI.Assets.get(isFreeGame ? 'spinButton/buttonFree.png' : 'spinButton/buttonAuto.png')
 
         const auto = view.getObject('autoMessage') as PIXI.Text
         if (auto) auto.visible = !isFreeGame
