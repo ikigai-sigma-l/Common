@@ -1,4 +1,4 @@
-import { UnSubscribes } from "src/observable/Observable";
+import { UnSubscribes } from "../../observable/Observable";
 import { InfoPanelView } from "./InfoPanelView";
 
 

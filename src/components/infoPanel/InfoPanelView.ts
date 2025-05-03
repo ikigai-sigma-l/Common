@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { View, Layout, Style } from 'src/core/View';
+import { View, Layout, Style } from '../../core/View';
 //import { AnnouncementPrefab } from '../Information/announcement/AnnouncementPrefab';
 import { TimerPrefab } from '../timer/TimerPrefab';
 //import { AutoSpinLeftPrefab } from '../Information/autoSpinLeft/AutoSpinLeftPrefab';
