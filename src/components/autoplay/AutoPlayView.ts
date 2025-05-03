@@ -1,4 +1,4 @@
-import { View, Layout, Style } from 'src/core/View';
+import { View, Layout, Style } from '../../core/View';
 import { Assets, Graphics, Sprite, TextStyle, FillGradient, Text } from 'pixi.js';
 import { AutoPlayConfirmButtonPrefab } from './AutoPlayConfirmButtonPrefab';
 import { AutoPlayCountButtonPrefab } from './AutoPlayCountButtonPrefab';
