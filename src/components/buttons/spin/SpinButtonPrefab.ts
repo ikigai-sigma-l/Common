@@ -39,6 +39,9 @@ export class SpinButtonPrefab {
         this.spinMaskViewModel?.release()
         this.spinMaskViewModel = null
 
+        this.spinAnim?.release()
+        this.spinAnim = null
+
         this.viewModel?.release()
         this.viewModel = null
 
