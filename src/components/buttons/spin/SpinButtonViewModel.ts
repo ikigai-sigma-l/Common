@@ -1,11 +1,12 @@
 import * as PIXI from 'pixi.js'
 import { Observable, UnSubscribes } from "../../../observable/Observable";
-import { SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
+import { SpinAnimState, SpinState, useGameUiStore } from '../../../stores/useGameUiStore';
 import { PopUpState, usePopUpStore } from '../../../stores/usePopUpStore';
 import { useSettingStore } from '../../../stores/useSettingStore';
 import { useTimerStore } from '../../../stores/useTimerStore';
 import { SpinButtonView} from './SpinButtonView';
 import { SpinButtonModel, SpinButtonState } from './SpinButtonModel';
+import { CustomEventList, CustomEventUtility } from 'src/utility/CustomEventUtility';
 
 export class SpinButtonViewModel {
 
@@ -132,6 +133,10 @@ export class SpinButtonViewModel {
 
     private sendBet() {
         this.holdTime = 0
-        // TODO: cal custom event here
+        CustomEventUtility.dispatch(CustomEventList.SendBet)
+
+        // test
+        useGameUiStore.spinAnim.set(SpinAnimState.Run)
+        useGameUiStore.spinState.set(useGameUiStore.spinState.get() | SpinState.NormalSpin)
     }
 }

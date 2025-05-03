@@ -1,24 +1,5 @@
 import { View, Layout, Style } from '../../../core/View';
 
-export enum SpinButtonState {
-    Normal,
-    Focus,
-    Push,
-    Disable,
-    Run,
-}
-
-export const getStateName = (state: SpinButtonState) => {
-    switch(state)
-    {
-        case SpinButtonState.Normal: return 'normal' 
-        case SpinButtonState.Focus: return 'focus'
-        case SpinButtonState.Push: return 'push'
-        case SpinButtonState.Disable: return 'disable'
-        case SpinButtonState.Run: return 'run'
-    }
-}
-
 export class SpinButtonView extends View {
 
     public initial(): void {

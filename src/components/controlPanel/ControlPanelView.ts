@@ -11,10 +11,12 @@ import { InfoButtonPrefab } from '../buttons/information/InfoButtonPrefab';
 import { BetValueButtonPrefab } from '../buttons/betValue/BetValueButtonPrefab';
 import { FullScreenButtonPrefab } from '../buttons/fullScreen/FullScreenPrefab';
 import { StopButtonPrefab } from '../buttons/stop/StopButtonPrefab';
+import { SpinGrowPrefab } from '../spinGrow/spinGrowPrefab';
 
 export class ControlPanelView extends View {
 
     private bottomBar: BottomBarPrefab | null = null
+    private spinGrow: SpinGrowPrefab | null = null
     private spinButton: SpinButtonPrefab | null = null
     //private stopButton: StopButtonPrefab | null = null
     private speedButton: SpeedButtonPrefab | null = null
@@ -33,6 +35,7 @@ export class ControlPanelView extends View {
 
     public release(): void {
         this.bottomBar?.release()
+        this.spinGrow?.release()
         this.spinButton?.release()
         //this.stopButton?.release()
         this.speedButton?.release()
@@ -49,6 +52,7 @@ export class ControlPanelView extends View {
 
     public onDraw(layout: Layout) {
         this.drawBottomBar(layout)
+        this.drawSpinGrow(layout)
         this.drawSpinButton(layout)
         //this.drawStopButton(layout)
         this.drawSpeedButton(layout)
@@ -63,6 +67,7 @@ export class ControlPanelView extends View {
 
     protected createObjects() {
         this.createBottomBar()
+        this.createSpinGrow()
         this.createSpinButton()
         //this.createStopButton()
         this.createSpeedButton()
@@ -90,6 +95,13 @@ export class ControlPanelView extends View {
         this.bottomBar.initial()
 
         this.addPrefab(this.bottomBar.getViews())
+    }
+
+    private createSpinGrow() {
+        this.spinGrow = new SpinGrowPrefab()
+        this.spinGrow.initial()
+
+        this.addPrefab(this.spinGrow.getViews())
     }
 
     private createSpinButton() {
@@ -167,6 +179,24 @@ export class ControlPanelView extends View {
             view.onDraw(layout)
         })
         this.bottomBar?.position(0, layout.height)
+    }
+
+    private drawSpinGrow(layout: Layout): void {
+        switch(layout.style)
+        {
+            case Style.DesktopHorizon:
+                this.spinGrow?.position(1508, 967 + layout.paddingY)
+                break
+
+            case Style.MobileHorizon:
+                this.spinGrow?.position(1720, 544)
+                break
+
+            case Style.Portrait:
+                this.spinGrow?.position(540, 1576)
+                break
+        }
+        this.spinGrow?.getViews()?.forEach((view) => view.onDraw(layout))
     }
 
     private drawSpinButton(layout: Layout): void {
