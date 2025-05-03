@@ -8,9 +8,19 @@ import { SpinButtonView} from './SpinButtonView';
 import { SpinButtonModel, SpinButtonState } from './SpinButtonModel';
 import { CustomEventList, CustomEventUtility } from '../../../utility/CustomEventUtility';
 
+enum SpinStateFlag {
+    Normal = 0,
+    Focus = 1 << 0,
+    Push = 1 << 1,
+    Disable = 1 << 2,
+    Run = 1 << 3,
+}
+
 export class SpinButtonViewModel {
 
     private unScribes: UnSubscribes = null
+
+    private stateFlag = Observable<number>(SpinStateFlag.Normal)
 
     private isIdle: boolean = true
 
@@ -42,6 +52,36 @@ export class SpinButtonViewModel {
                 }
             ),
             model.state.subscribe(
+                (cur) => {
+                    let flag = this.stateFlag.get()
+                    flag &= SpinStateFlag.Run
+                    switch(cur)
+                    {
+                        case SpinButtonState.Normal:
+                            flag |= SpinStateFlag.Normal
+                            break
+                        case SpinButtonState.Focus:
+                            flag |= SpinStateFlag.Focus
+                            break
+                        case SpinButtonState.Push:
+                            flag |= SpinStateFlag.Push
+                            break
+                        case SpinButtonState.Disable:
+                            flag |= SpinStateFlag.Disable
+                            break
+                    }
+                    this.stateFlag.set(flag)
+                }
+            ),
+            useGameUiStore.spinAnim.subscribe(
+                (cur) => {
+                    let flag = this.stateFlag.get()
+                    flag &= ~SpinStateFlag.Run
+                    if (cur === SpinAnimState.Run) flag |= SpinStateFlag.Run
+                    this.stateFlag.set(flag)
+                }
+            ),
+            this.stateFlag.subscribe(
                 (cur) => {
                     this.setSkin(view, cur)
                 }
@@ -102,15 +142,32 @@ export class SpinButtonViewModel {
         }
     }
 
-    private setSkin(view: SpinButtonView, state: SpinButtonState) {
+    private setSkin(view: SpinButtonView, flag: SpinStateFlag) {
+        const { isRun, state } = this.parseFlag(flag) 
+
         const background = view.getObject('background') as PIXI.Sprite
         if (background) background.texture = PIXI.Assets.get(`spinButton/spin_${this.getStateName(state)}.png`)
 
         const arrow = view.getObject('arrow') as PIXI.Sprite
-        if (arrow) arrow.texture = PIXI.Assets.get(`spinButton/arrow_${this.getStateName(state)}.png`)
+        if (arrow) {
+            if (isRun) arrow.texture = PIXI.Assets.get(`spinButton/arrow_run.png`)
+            else arrow.texture = PIXI.Assets.get(`spinButton/arrow_${this.getStateName(state)}.png`)
+        }
 
         const icon = view.getObject('icon') as PIXI.Sprite
         if (icon) icon.texture = PIXI.Assets.get(`spinButton/icon_${this.getStateName(state)}.png`)
+    }
+
+    private hasFlag(cur: SpinStateFlag, flag: SpinStateFlag) {
+        return ((cur & flag) !== 0)
+    }
+
+    private parseFlag(flag: SpinStateFlag) {
+        const isRun = this.hasFlag(flag, SpinStateFlag.Run)
+        if (this.hasFlag(flag, SpinStateFlag.Disable)) return { isRun: isRun, state: SpinButtonState.Disable }
+        if (this.hasFlag(flag, SpinStateFlag.Push)) return { isRun: isRun, state: SpinButtonState.Push }
+        if (this.hasFlag(flag, SpinStateFlag.Focus)) return { isRun: isRun, state: SpinButtonState.Focus }
+        return { isRun: isRun, state: SpinButtonState.Normal }
     }
 
     private onSpinDown() {

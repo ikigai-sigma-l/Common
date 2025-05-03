@@ -7,6 +7,7 @@ import { useSettingStore } from '../../stores/useSettingStore';
 import { AutoPlayConfirmButtonModel } from './AutoPlayConfirmButtonModel';
 import { language } from '../../utility/Language';
 import { useActiveResultStore } from '../../stores/useActiveResultStore';
+import { CustomEventList, CustomEventUtility } from '../../utility/CustomEventUtility';
 
 export class AutoPlayConfirmButtonViewModel {
 
@@ -71,7 +72,7 @@ export class AutoPlayConfirmButtonViewModel {
             usePopUpStore.current.set(PopUpState.None)
             useGameUiStore.autoSpinLeft.set(useSettingStore.autoCount.get())
             useGameUiStore.spinState.set(useGameUiStore.spinState.get() | SpinState.AutoSpin)
-            // TODO: call custom event
+            CustomEventUtility.dispatch(CustomEventList.SendBet)
         }
     
         frame.on('pointerdown', this.onButtonDown.bind(this))
