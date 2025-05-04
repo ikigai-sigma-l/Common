@@ -4,6 +4,7 @@ import { useTimerStore } from '../../stores/useTimerStore';
 import { SpinGrowView } from './spinGrowView';
 import { CustomEventList, CustomEventUtility } from '../../utility/CustomEventUtility';
 import { AnimationStateListener, Spine } from '@esotericsoftware/spine-pixi-v8';
+import { SpinState, useGameUiStore } from '../../stores/useGameUiStore';
 
 export class SpinGrowViewModel {
 
@@ -23,6 +24,12 @@ export class SpinGrowViewModel {
         this.release()
 
         this.unScribes = [
+            useGameUiStore.spinState.subscribe(
+                (cur) => {
+                    const container = view.getContainer()
+                    if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin)) == SpinState.None)
+                }
+            ),
             useTimerStore.subscribe(
                 (cur) => {
                     const delta = cur.delta
@@ -59,6 +66,7 @@ export class SpinGrowViewModel {
             if (!spine) return
             spine.visible = true
             spine.state.setAnimation(0, 'Spin_glow_anim', false)
+            spine.update(0)
         }
 
         CustomEventUtility.addEvent(CustomEventList.PlaySpinGrow, playSpine)
