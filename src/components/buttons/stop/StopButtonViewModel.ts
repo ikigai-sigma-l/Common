@@ -6,8 +6,6 @@ import { ButtonState, ButtonView, getStateName } from '../ButtonView';
 
 export class StopButtonViewModel {
 
-    private isVisible = Observable<boolean>(false)
-
     private state = Observable<ButtonState>(ButtonState.Normal)
         
     private skinName = Observable<string>('')
@@ -59,15 +57,16 @@ export class StopButtonViewModel {
                     }
                 }
             ),
-            useGameUiStore.spinAnim.subscribe(
-                (cur) => {
-                    this.isVisible.set(cur === SpinAnimState.Run)
-                }
-            ),
-            this.isVisible.subscribe(
+            useGameUiStore.spinState.subscribe(
                 (cur) => {
                     const container = view.getContainer()
-                    if (container) container.visible = cur
+                    if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin)) == SpinState.None)
+                }
+            ),
+            useGameUiStore.spinAnim.subscribe(
+                (cur) => {
+                    const background = view.getObject('background') as PIXI.Sprite
+                    if (background) background.visible = ((cur & (SpinState.NormalSpin)) == SpinState.None)
                 }
             ),
             this.registerClickEvent(view),
