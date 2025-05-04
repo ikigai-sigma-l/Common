@@ -66,7 +66,7 @@ export class StopButtonViewModel {
             useGameUiStore.spinAnim.subscribe(
                 (cur) => {
                     const background = view.getObject('background') as PIXI.Sprite
-                    if (background) background.visible = ((cur & (SpinState.NormalSpin)) == SpinState.None)
+                    if (background) background.visible = (cur === SpinAnimState.Run)
                 }
             ),
             this.registerClickEvent(view),
