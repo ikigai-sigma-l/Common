@@ -24,12 +24,6 @@ export class SpinGrowViewModel {
         this.release()
 
         this.unScribes = [
-            useGameUiStore.spinState.subscribe(
-                (cur) => {
-                    const container = view.getContainer()
-                    if (container) container.visible = ((cur & (SpinState.AutoSpin | SpinState.FreeSpin)) == SpinState.None)
-                }
-            ),
             useTimerStore.subscribe(
                 (cur) => {
                     const delta = cur.delta
@@ -62,6 +56,8 @@ export class SpinGrowViewModel {
 
     private registerTriggerEvent(view: SpinGrowView) {
         const playSpine = () => {
+            if (!this.isPlayable()) return
+
             const spine = view.getObject('spinGrow') as Spine
             if (!spine) return
             spine.visible = true
@@ -74,5 +70,10 @@ export class SpinGrowViewModel {
         return () => {
             CustomEventUtility.removeEvent(CustomEventList.PlaySpinGrow, playSpine)
         }
+    }
+
+    private isPlayable() {
+        const state = useGameUiStore.spinState.get()
+        return ((state & (SpinState.AutoSpin | SpinState.FreeSpin)) == SpinState.None)
     }
 }
