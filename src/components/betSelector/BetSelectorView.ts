@@ -62,7 +62,7 @@ export class BetSelectorView extends View {
                         fontSize: '58px',
                         fontWeight: 'bold',
                         align: 'left',
-                        fill: Gradient.popUpTitle,
+                        fill: Gradient.title,
                     })
         text.text = 'THE BET'
         text.anchor.set(0, 0)

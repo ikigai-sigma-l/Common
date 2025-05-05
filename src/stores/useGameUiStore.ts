@@ -1,4 +1,4 @@
-import { GamePhaseType } from '../schame/BetResponse'
+import { GamePhaseType, Payout } from '../schame/BetResponse'
 import { Observable } from '../observable/Observable'
 
 
@@ -29,6 +29,8 @@ export class GameUiStore {
   balance = Observable<number>(1200)
   lastActTime = Observable<number>(0)
   isAudioCompleted = Observable<boolean>(false)
+  totalWin = Observable<{ value: number, duration: number}>({ value: 0, duration: 0 })
+  payout = Observable<Payout[]>([])
 }
 
 export const useGameUiStore = new GameUiStore()
