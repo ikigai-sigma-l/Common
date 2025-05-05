@@ -1,6 +1,6 @@
 import { MessagePrefab } from '../../../components/message/MessagePrefab';
-//import { WinBottomLinePrefab } from 'src/components/payLineMessage/WinBottomLinePrefab';
-import { WinTopLinePrefab } from 'src/components/payLineMessage/WinTopLinePrefab';
+//import { WinBottomLinePrefab } from '../../../components/payLineMessage/WinBottomLinePrefab';
+import { WinTopLinePrefab } from '../../../components/payLineMessage/WinTopLinePrefab';
 import { View, Layout, Style } from '../../../core/View';
 import { language } from '../../../utility/Language';
 
