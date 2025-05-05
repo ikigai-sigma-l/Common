@@ -66,7 +66,7 @@ export class PopUpSystem extends System {
                     }
 
                     if (cur == PopUpState.Setting) {
-                        views.push(...this.createBetSelector())
+                        views.push(...this.createSetting())
                     }
 
                     this.addPrefab(views)
