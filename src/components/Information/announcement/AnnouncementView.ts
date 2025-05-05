@@ -1,5 +1,5 @@
 import { MessagePrefab } from '../../../components/message/MessagePrefab';
-//import { WinBottomLinePrefab } from '../../../components/payLineMessage/WinBottomLinePrefab';
+import { WinBottomLinePrefab } from '../../../components/payLineMessage/WinBottomLinePrefab';
 import { WinTopLinePrefab } from '../../../components/payLineMessage/WinTopLinePrefab';
 import { View, Layout, Style } from '../../../core/View';
 import { language } from '../../../utility/Language';
@@ -8,7 +8,7 @@ export class AnnouncementView extends View {
 
     private betStateIdle: MessagePrefab | null = null
     private betStateRun: MessagePrefab | null = null
-    //private winBottomLine: WinBottomLinePrefab | null = null
+    private winBottomLine: WinBottomLinePrefab | null = null
     private winTopLine: WinTopLinePrefab | null = null
 
     public initial(): void {
@@ -22,8 +22,8 @@ export class AnnouncementView extends View {
         this.betStateRun?.release()
         this.betStateRun = null
 
-        //this.winBottomLine?.release()
-        //this.winBottomLine = null
+        this.winBottomLine?.release()
+        this.winBottomLine = null
 
         this.winTopLine?.release()
         this.winTopLine = null
@@ -34,14 +34,14 @@ export class AnnouncementView extends View {
     public onDraw(layout: Layout) {
         this.drawBetStateIdleMsg(layout)
         this.drawBetStateRunMsg(layout)
-        //this.drawWinBottomLine(layout)
+        this.drawWinBottomLine(layout)
         this.drawWinTopLine(layout)
     }
 
     private createObjects() {
         this.createBetStateIdleMsg()
         this.createBetStateRunMsg()
-        //this.createWinBottomLine()
+        this.createWinBottomLine()
         this.createWinTopLine()
     } 
 
@@ -70,7 +70,7 @@ export class AnnouncementView extends View {
 
         this.addPrefab(this.betStateRun.getViews())
     }
-/*
+
     private createWinBottomLine() {
         this.winBottomLine = new WinBottomLinePrefab()
         this.winBottomLine.initial()
@@ -79,7 +79,7 @@ export class AnnouncementView extends View {
 
         this.winBottomLine.setPosition(0, 33)
     }
-*/
+
     private createWinTopLine() {
         this.winTopLine = new WinTopLinePrefab()
         this.winTopLine.initial()
@@ -96,7 +96,7 @@ export class AnnouncementView extends View {
     private drawBetStateRunMsg(layout: Layout) {
         this.betStateRun?.getViews().forEach((view) => view.onDraw(layout))
     }
-/*
+
     private drawWinBottomLine(layout: Layout) {
         this.winBottomLine?.getViews().forEach((view) => view.onDraw(layout))
 
@@ -115,7 +115,7 @@ export class AnnouncementView extends View {
                 break
         }
     }
-*/
+
     private drawWinTopLine(layout: Layout) {
         this.winTopLine?.getViews().forEach((view) => view.onDraw(layout))
 
@@ -142,9 +142,8 @@ export class AnnouncementView extends View {
     public getBetStateRunMessage() {
         return this.betStateRun
     }
-/*
+
     public getWinBottomLineMessage() {
         return this.winBottomLine
     }
-*/
 }
