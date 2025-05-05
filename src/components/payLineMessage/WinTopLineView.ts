@@ -66,7 +66,7 @@ export class WinTopLineView extends View {
         const text = this.createBitmapText('winCurrency')
         if (!text) return
 
-        text.anchor.set(0, 0.6)
+        text.anchor.set(0, 0.5)
         text.style = new TextStyle({
             fontFamily: 'UiFont',
             fontSize: '32',
