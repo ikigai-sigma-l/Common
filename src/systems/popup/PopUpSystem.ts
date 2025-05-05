@@ -1,4 +1,4 @@
-import { PopUpState, usePopUpStore } from "src/stores/usePopUpStore";
+import { PopUpState, usePopUpStore } from "../../stores/usePopUpStore";
 import { AutoPlayPrefab } from "../../components/autoplay/AutoPlayPrefab";
 import { BetSelectorPrefab } from "../../components/betSelector/BetSelectorPrefab";
 import { BlockPrefab } from "../../components/block/BlockPrefab";
