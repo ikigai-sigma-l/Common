@@ -158,6 +158,8 @@ abstract class Core {
     const container = system.getContainer() 
     if (!container) return
 
+    system.initial()
+
     this.root?.addChild(container)
     this.systems.push(system)
     system.onDraw(layout)
