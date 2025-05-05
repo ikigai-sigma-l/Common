@@ -1,3 +1,4 @@
+import { PopUpState, usePopUpStore } from "src/stores/usePopUpStore";
 import { AutoPlayPrefab } from "../../components/autoplay/AutoPlayPrefab";
 import { BetSelectorPrefab } from "../../components/betSelector/BetSelectorPrefab";
 import { BlockPrefab } from "../../components/block/BlockPrefab";
@@ -16,33 +17,13 @@ export class PopUpSystem extends System {
     private setting: SettingPrefab | null = null
 
     public initial() {
-        const views: View[] = []
-
-        views.push(...this.createBlock())
-        views.push(...this.createAutoPlay())
-        views.push(...this.createBetSelector())
-        views.push(...this.createSetting())
-
-        const root = this.getContainer()
-        views.forEach((view) => {
-            const container = view.getContainer()
-            if (container) root?.addChild(container)
-        })
-
         this.observer()
     }
   
     public release() {
         this.unObserver()
 
-        this.betSelector?.release()
-        this.betSelector = null
-        this.autoplay?.release()
-        this.autoplay = null
-        this.setting?.release()
-        this.setting = null
-        this.block?.release()
-        this.block = null
+        this.releaseAllPrefab()
 
         super.release()
     }
@@ -54,8 +35,39 @@ export class PopUpSystem extends System {
         this.setting?.getViews().forEach((view) => view.onDraw(layout))
     }
 
+    private addPrefab(views: View[]) {
+        const root = this.getContainer()
+        views.forEach((view) => {
+            const container = view.getContainer()
+            if (container) root?.addChild(container)
+        })
+    }
+
     private observer() {
         this.unSubscribes = [
+            usePopUpStore.current.subscribe(
+                (cur) => {
+                    this.releaseAllPrefab()
+                    const views: View[] = []
+                    if (cur !== PopUpState.None) {
+                        views.push(...this.createBlock())
+                    }
+
+                    if (cur == PopUpState.AutoPlay) {
+                        views.push(...this.createAutoPlay())
+                    }
+
+                    if (cur == PopUpState.BetSelector) {
+                        views.push(...this.createBetSelector())
+                    }
+
+                    if (cur == PopUpState.Setting) {
+                        views.push(...this.createBetSelector())
+                    }
+
+                    this.addPrefab(views)
+                }
+            )
         ]
     }
     
@@ -92,5 +104,16 @@ export class PopUpSystem extends System {
         this.setting.initial()
 
         return this.setting.getViews()
+    }
+
+    private releaseAllPrefab() {
+        this.betSelector?.release()
+        this.betSelector = null
+        this.autoplay?.release()
+        this.autoplay = null
+        this.setting?.release()
+        this.setting = null
+        this.block?.release()
+        this.block = null
     }
  }

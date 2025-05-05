@@ -20,13 +20,6 @@ export class BlockViewModel {
     public bind(view: BlockView) {
         this.release()
 
-        this.unScribes = [
-            usePopUpStore.current.subscribe(
-                (cur) => {
-                    const graphics = view.getObject('block') as PIXI.Graphics
-                    if (graphics) graphics.visible = cur != PopUpState.None
-                }
-            )
-        ]
+        this.unScribes = []
     }
 }

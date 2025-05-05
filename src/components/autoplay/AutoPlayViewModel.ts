@@ -24,12 +24,6 @@ export class AutoPlayViewModel {
         this.release()
 
         this.unScribes = [
-            usePopUpStore.current.subscribe(
-                (cur) => {
-                    const container = view.getContainer()
-                    if (container) container.visible = cur == PopUpState.AutoPlay
-                }
-            ),
             useSettingStore.autoCount.subscribe(
                 (cur) => {
                     const btns = view.getList()

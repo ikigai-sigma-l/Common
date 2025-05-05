@@ -25,12 +25,6 @@ export class BetSelectorViewModel {
         this.release()
 
         this.unScribes = [
-            usePopUpStore.current.subscribe(
-                (cur) => {
-                    const container = view.getContainer()
-                    if (container) container.visible = cur == PopUpState.BetSelector
-                }
-            ),
             this.registerLocalization(view),
             this.registerClickEvent(view)
         ]

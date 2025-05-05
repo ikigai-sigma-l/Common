@@ -25,12 +25,6 @@ export class SettingViewModel {
         this.release()
 
         this.unScribes = [
-            usePopUpStore.current.subscribe(
-                (cur) => {
-                    const container = view.getContainer()
-                    if (container) container.visible = cur == PopUpState.Setting
-                }
-            ),
             useSettingStore.batterySaving.subscribe(
                 (cur) => {
                     const battery = view.getBattery()
