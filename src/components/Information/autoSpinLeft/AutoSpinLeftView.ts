@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { View, Layout, Style } from '../../../core/View';
+import { Gradient } from 'src/utility/GradientUtility';
 
 export class AutoSpinLeftView extends View {
 
@@ -46,7 +47,7 @@ export class AutoSpinLeftView extends View {
                         fontSize: '72px',
                         fontWeight: 'bold',
                         align: 'center',
-                        fill: '#ffffff',
+                        fill: Gradient.spinLeft,
                     })
     }
 
@@ -61,7 +62,7 @@ export class AutoSpinLeftView extends View {
                         fontSize: '72px',
                         fontWeight: 'bold',
                         align: 'center',
-                        fill: '#ffffff',
+                        fill: Gradient.spinLeft,
                     })
     }
 
@@ -130,18 +131,18 @@ export class AutoSpinLeftView extends View {
         switch(layout.style)
         {
             case Style.DesktopHorizon:
-                text.style.fontSize = '64px'
-                text.position.set(-8, -28)
+                text.style.fontSize = '92px'
+                text.position.set(0, -28)
                 break
 
             case Style.MobileHorizon:
-                text.style.fontSize = '72px'
-                text.position.set(-8, -48)
+                text.style.fontSize = '124px'
+                text.position.set(0, -48)
                 break
 
             case Style.Portrait:
-                text.style.fontSize = '72px'
-                text.position.set(-8, -48)
+                text.style.fontSize = '124px'
+                text.position.set(0, -48)
                 break
         }
     }
@@ -153,18 +154,18 @@ export class AutoSpinLeftView extends View {
         switch(layout.style)
         {
             case Style.DesktopHorizon:
-                text.style.fontSize = '64px'
-                text.position.set(-8, -28)
+                text.style.fontSize = '92px'
+                text.position.set(0, -28)
                 break
 
             case Style.MobileHorizon:
-                text.style.fontSize = '72px'
-                text.position.set(-8, -48)
+                text.style.fontSize = '124px'
+                text.position.set(0, -48)
                 break
 
             case Style.Portrait:
-                text.style.fontSize = '72px'
-                text.position.set(-8, -48)
+                text.style.fontSize = '124px'
+                text.position.set(0, -48)
                 break
         }
     }

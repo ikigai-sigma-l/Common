@@ -28,4 +28,11 @@ export class Gradient {
         end: { x: 0, y: 1 },
         textureSpace: 'local',
     }).addColorStop(0, '#FCFCFB').addColorStop(1, '#DDD9D0')
+
+    public static spinLeft: FillGradient = new FillGradient({
+        type: 'linear',
+        start: { x: 0, y: 0 },
+        end: { x: 0, y: 1 },
+        textureSpace: 'local',
+    }).addColorStop(0, '#FFFFFF').addColorStop(1, '#DED9D0')
 }
