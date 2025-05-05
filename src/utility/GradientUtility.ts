@@ -8,19 +8,12 @@ export class Gradient {
         textureSpace: 'local',
     }).addColorStop(0, [0,0,0,0.3]).addColorStop(1, [0,0,0,0.5])
 
-    public static confirmBtn: FillGradient = new FillGradient({
+    public static title: FillGradient = new FillGradient({
         type: 'linear',
         start: { x: 0, y: 0 },
         end: { x: 0, y: 1 },
         textureSpace: 'local',
-    }).addColorStop(0, '#FFFFFF').addColorStop(1, '#DED9DD')
-
-    public static popUpTitle: FillGradient = new FillGradient({
-        type: 'linear',
-        start: { x: 0, y: 0 },
-        end: { x: 0, y: 1 },
-        textureSpace: 'local',
-    }).addColorStop(0, '#FFD569').addColorStop(1, '#D9AF45')
+    }).addColorStop(0, '#FED569').addColorStop(1, '#D9AF45')
 
     public static btnSelect: FillGradient = new FillGradient({
         type: 'linear',
@@ -29,7 +22,7 @@ export class Gradient {
         textureSpace: 'local',
     }).addColorStop(0, '#FCFCFB').addColorStop(1, '#DDD9D0')
 
-    public static spinLeft: FillGradient = new FillGradient({
+    public static message: FillGradient = new FillGradient({
         type: 'linear',
         start: { x: 0, y: 0 },
         end: { x: 0, y: 1 },

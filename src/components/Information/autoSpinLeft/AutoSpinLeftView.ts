@@ -47,7 +47,7 @@ export class AutoSpinLeftView extends View {
                         fontSize: '72px',
                         fontWeight: 'bold',
                         align: 'center',
-                        fill: Gradient.spinLeft,
+                        fill: Gradient.message,
                     })
     }
 
@@ -62,7 +62,7 @@ export class AutoSpinLeftView extends View {
                         fontSize: '72px',
                         fontWeight: 'bold',
                         align: 'center',
-                        fill: Gradient.spinLeft,
+                        fill: Gradient.message,
                     })
     }
 

@@ -86,7 +86,7 @@ export class AutoPlayView extends View {
                         fontSize: '30px',
                         fontWeight: 'bold',
                         align: 'left',
-                        fill: Gradient.popUpTitle,
+                        fill: Gradient.title,
                     })
         text.text = 'AUTOPLAY'
         text.anchor.set(0, 0)
@@ -153,7 +153,7 @@ export class AutoPlayView extends View {
                 break
 
             case Style.DesktopHorizon:
-                container.position.set(1456, 412)
+                container.position.set(1456, 412 + layout.paddingY)
                 break
         }
     }

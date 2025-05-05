@@ -68,7 +68,7 @@ export class SettingView extends View {
                         fontSize: '58px',
                         fontWeight: 'bold',
                         align: 'left',
-                        fill: Gradient.popUpTitle,
+                        fill: Gradient.title,
                     })
         text.text = 'GAME SETTING'
         text.anchor.set(0, 0)

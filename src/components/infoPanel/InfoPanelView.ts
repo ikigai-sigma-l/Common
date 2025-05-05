@@ -2,14 +2,14 @@ import * as PIXI from 'pixi.js'
 import { View, Layout, Style } from '../../core/View';
 import { TimerPrefab } from '../timer/TimerPrefab';
 //import { AnnouncementPrefab } from '../Information/announcement/AnnouncementPrefab';
-//import { WalletPrefab } from '../Information/wallet/WalletPrefab';
+import { WalletPrefab } from '../Information/wallet/WalletPrefab';
 import { AutoSpinLeftPrefab } from '../Information/autoSpinLeft/AutoSpinLeftPrefab';
 
 export class InfoPanelView extends View {
 
     private timer : TimerPrefab | null = null
     //private announce: AnnouncementPrefab | null = null
-    //private wallet: WalletPrefab | null = null
+    private wallet: WalletPrefab | null = null
     private autoLeft: AutoSpinLeftPrefab | null = null
 
     public initial(): void {
@@ -23,10 +23,10 @@ export class InfoPanelView extends View {
 /*
         this.announce?.release()
         this.announce = null
-
+*/
         this.wallet?.release()
         this.wallet = null
-*/
+
         this.autoLeft?.release()
         this.autoLeft = null
 
@@ -35,19 +35,15 @@ export class InfoPanelView extends View {
 
     public onDraw(layout: Layout) {
         this.drawTimer(layout)
-        /*
-        this.drawAnnounce(layout)
+        //this.drawAnnounce(layout)
         this.drawWallet(layout)
-        */
         this.drawAutoSpinLeft(layout)
     }
 
     private createObjects() {
         this.createTimer()
-        /*
-        this.createAnnounce()
+        //this.createAnnounce()
         this.createWallet()
-        */
         this.createAutoSpinLeft()
     } 
 
@@ -74,14 +70,14 @@ export class InfoPanelView extends View {
 
         this.addPrefab(this.announce.getViews())
     }
-
+*/
     private createWallet() {
         this.wallet = new WalletPrefab()
         this.wallet.initial()
 
         this.addPrefab(this.wallet.getViews())
     }
-*/
+
     private createAutoSpinLeft() {
         this.autoLeft = new AutoSpinLeftPrefab()
         this.autoLeft.initial()
@@ -114,7 +110,7 @@ export class InfoPanelView extends View {
             view.onDraw(layout)
         })
     }
-
+*/
     private drawWallet(layout: Layout) {
         switch(layout.style)
         {
@@ -133,7 +129,7 @@ export class InfoPanelView extends View {
 
         this.wallet?.getViews().forEach((view) => view.onDraw(layout))
     }
-*/
+
     private drawAutoSpinLeft(layout: Layout) {
 
         switch(layout.style)

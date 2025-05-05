@@ -39,7 +39,7 @@ export class AutoPlayConfirmButtonView extends View {
                         lineHeight: 24,
                         fontWeight: 'bold',
                         align: 'center',
-                        fill: Gradient.confirmBtn,
+                        fill: Gradient.message,
                     })
         text.text = language.text('AUTO_SPIN_CONFIRM')
         text.anchor.set(0.5)
