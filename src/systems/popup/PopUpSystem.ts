@@ -16,6 +16,8 @@ export class PopUpSystem extends System {
     private betSelector: BetSelectorPrefab | null = null
     private setting: SettingPrefab | null = null
 
+    private layout: Layout | null = null
+
     public initial() {
         this.observer()
     }
@@ -29,6 +31,7 @@ export class PopUpSystem extends System {
     }
 
     public onDraw(layout: Layout): void {
+        this.layout = layout
         this.block?.getViews().forEach((view) => view.onDraw(layout))
         this.betSelector?.getViews().forEach((view) => view.onDraw(layout))
         this.autoplay?.getViews().forEach((view) => view.onDraw(layout))
@@ -40,6 +43,7 @@ export class PopUpSystem extends System {
         views.forEach((view) => {
             const container = view.getContainer()
             if (container) root?.addChild(container)
+            if (this.layout) view.onDraw(this.layout)
         })
     }
 
