@@ -175,9 +175,6 @@ export class WinTopLineView extends View {
 
         let start = width * -0.5
 
-        console.log(`[Sigma] 1.message = ${message?.height ?? 0}, money = ${money?.height ?? 0}, currency = ${currency?.height ?? 0}`)
-        console.log(`[Sigma] 2.message = ${message?.style.fontSize ?? 0}, money = ${money?.style.fontSize ?? 0}, currency = ${currency?.style.fontSize ?? 0}`)
-
         if (message) {
             message.position.set(start, ((money?.height ?? 0) - message.height) * 0.5)
             start += message.width + this.gap
@@ -189,7 +186,7 @@ export class WinTopLineView extends View {
         }
 
         if (currency) {
-            currency.position.set(start, ((money?.height ?? 0) - currency.height) * -0.5)
+            currency.position.set(start, ((money?.height ?? 0) - currency.height) * 0.5)
         }
 
         this.paintFrame(width)
