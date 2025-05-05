@@ -96,7 +96,7 @@ export class BetSelectorView extends View {
         switch(layout.style)
         {
             case Style.Portrait: 
-                container.position.set(40, 428 + layout.paddingY)
+                container.position.set(40, 428)
                 break
 
             case Style.MobileHorizon:
@@ -104,7 +104,7 @@ export class BetSelectorView extends View {
                 break
 
             case Style.DesktopHorizon:
-                container.position.set(1224, 185)
+                container.position.set(1224, 185 + layout.paddingY)
                 break
         }
     }
