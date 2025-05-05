@@ -1,8 +1,8 @@
 import { View, Layout, Style } from '../../core/View';
 import { Text, FillGradient, Graphics, Sprite, TextStyle } from 'pixi.js';
 import { Gradient } from '../../utility/GradientUtility';
-import { winSymbolFactory } from 'src/factory/WinSymbol/WinSymbolFactory';
-import { WinSymbolPrefab } from 'src/factory/WinSymbol/WinSymbolPrefab';
+import { winSymbolFactory } from '../../factory/WinSymbol/WinSymbolFactory';
+import { WinSymbolPrefab } from '../../factory/WinSymbol/WinSymbolPrefab';
 
 export class WinBottomLineView extends View {
 

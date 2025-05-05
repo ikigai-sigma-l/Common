@@ -2,10 +2,10 @@ import * as PIXI from 'pixi.js'
 import { Observable, UnSubscribes } from "../../observable/Observable";
 import { WinBottomLineView } from './WinBottomLineView';
 import { useGameUiStore } from '../../stores/useGameUiStore';
-import { Payout } from 'src/schame/BetResponse';
-import { formatNumber } from 'src/utility/FormatUtility';
-import { useActiveResultStore } from 'src/stores/useActiveResultStore';
-import { language } from 'src/utility/Language';
+import { Payout } from '../../schame/BetResponse';
+import { formatNumber } from '../../utility/FormatUtility';
+import { useActiveResultStore } from '../../stores/useActiveResultStore';
+import { language } from '../../utility/Language';
 
 
 export class WinBottomLineViewModel {
