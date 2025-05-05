@@ -8,6 +8,13 @@ export class Gradient {
         textureSpace: 'local',
     }).addColorStop(0, [0,0,0,0.3]).addColorStop(1, [0,0,0,0.5])
 
+    public static frame: FillGradient = new FillGradient({
+        type: 'linear',
+        start: { x: 0, y: 0 },
+        end: { x: 1, y: 0 },
+        textureSpace: 'local',
+    }).addColorStop(0, [0,0,0,0.5]).addColorStop(1, [0,0,0,0.3])
+
     public static title: FillGradient = new FillGradient({
         type: 'linear',
         start: { x: 0, y: 0 },
