@@ -4,11 +4,9 @@ export enum PopUpState {
   None = 0,
   CheatTool = 1,
   AutoPlay = 2,
-  GetFreeSpin = 3,
-  WinFreeSpin = 4,
-  BetSelector = 5,
-  Setting = 6,
-  GameInfo = 7,
+  BetSelector = 3,
+  Setting = 4,
+  GameInfo = 5,
 }
 
 export class PopUpStore {

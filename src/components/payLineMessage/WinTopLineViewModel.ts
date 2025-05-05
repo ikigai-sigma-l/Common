@@ -51,16 +51,7 @@ export class WinTopLineViewModel {
                 if (message) message.text = language.text(cur)
                 view.align()
             }),
-            useActiveResultStore.subscribe(
-                (state) => state.data,
-                (cur) => {
-                    const currency = view.getObject('winCurrency') as PIXI.Text
-                    if (currency) {
-                        currency.text = useActiveResultStore.getState().getCurrency().code
-                        view.align()
-                    }
-                }
-            )
+            this.registerCurrency(view),
         ]
     }
 
@@ -93,5 +84,21 @@ export class WinTopLineViewModel {
         })
 
         this.anim.start()
+    }
+
+    private registerCurrency(view: WinTopLineView) {
+        const refresh = () => {
+            const currency = view.getObject('winCurrency') as PIXI.BitmapText
+            if (currency) {
+                currency.text = useActiveResultStore.getState().getCurrency().code
+                view.align()
+            }
+        }
+            
+        refresh()
+        return useActiveResultStore.subscribe(
+            (state) => state.data,
+            (cur) => refresh()
+        )
     }
 }
