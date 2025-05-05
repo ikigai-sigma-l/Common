@@ -3,7 +3,7 @@ import { BetSelectorPrefab } from "../../components/betSelector/BetSelectorPrefa
 import { BlockPrefab } from "../../components/block/BlockPrefab";
 import { SettingPrefab } from "../../components/setting/SettingPrefab";
 import { System } from "../../core/System";
-import { View, Register } from "../../core/View";
+import { Layout, View } from "../../core/View";
 import { UnSubscribes } from "../../observable/Observable";
 
 
@@ -15,15 +15,19 @@ export class PopUpSystem extends System {
     private betSelector: BetSelectorPrefab | null = null
     private setting: SettingPrefab | null = null
 
-    public initial(register: Register) {
+    public initial() {
         const views: View[] = []
 
         views.push(...this.createBlock())
         views.push(...this.createAutoPlay())
         views.push(...this.createBetSelector())
         views.push(...this.createSetting())
-        
-        if (register) register(views)
+
+        const root = this.getContainer()
+        views.forEach((view) => {
+            const container = view.getContainer()
+            if (container) root?.addChild(container)
+        })
 
         this.observer()
     }
@@ -35,8 +39,19 @@ export class PopUpSystem extends System {
         this.betSelector = null
         this.autoplay?.release()
         this.autoplay = null
+        this.setting?.release()
+        this.setting = null
         this.block?.release()
         this.block = null
+
+        super.release()
+    }
+
+    public onDraw(layout: Layout): void {
+        this.block?.getViews().forEach((view) => view.onDraw(layout))
+        this.betSelector?.getViews().forEach((view) => view.onDraw(layout))
+        this.autoplay?.getViews().forEach((view) => view.onDraw(layout))
+        this.setting?.getViews().forEach((view) => view.onDraw(layout))
     }
 
     private observer() {

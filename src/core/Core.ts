@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import { View, Layout, Style } from './View'
 import { Utils } from '../utility/Utils'
+import { System } from './System'
 
 abstract class Core {
   public container: HTMLElement | null = null
@@ -9,7 +10,7 @@ abstract class Core {
 
   private root: PIXI.Container | null = null
 
-  private views: View[] = []
+  private systems: System[] = []
 
   public createApplication(options?: Partial<PIXI.ApplicationOptions>): Promise<void> {
     if (!this.container || this.app) return Promise.resolve()
@@ -29,7 +30,7 @@ abstract class Core {
 
   public release() {
     this.unregisterEvent()
-    this.removeView()
+    this.removeSystem()
     this.removeRoot()
     this.releaseApplication()
   }
@@ -144,24 +145,22 @@ abstract class Core {
     
     const layout = this.getLayout()
 
-    this.views.forEach((view) => {
-      view.onDraw(layout)
+    this.systems.forEach((sys) => {
+      sys.onDraw(layout)
     })
   }
 
-  protected addView(views: View[]) {
+  protected addSystem(system: System) {
     if (!this.root) return
 
     const layout = this.getLayout()
 
-    views.forEach((view) => {
-      const container = view?.getContainer()
-      if (container) {
-        this.root?.addChild(container)
-        this.views.push(view)
-        view.onDraw(layout)
-      }
-    })
+    const container = system.getContainer() 
+    if (!container) return
+
+    this.root?.addChild(container)
+    this.systems.push(system)
+    system.onDraw(layout)
   }
 
   protected abstract onResizeHandle(width: number, height: number, devicePixelRatio: number): void
@@ -187,8 +186,11 @@ abstract class Core {
     this.root?.destroy()
   }
 
-  private removeView() {
-    this.views = []
+  private removeSystem() {
+    this.systems.forEach((sys) => {
+      sys?.release()
+    })
+    this.systems = []
   }
 }
 

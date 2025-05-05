@@ -2,8 +2,6 @@ import { Spine, SpineDebugRenderer } from '@esotericsoftware/spine-pixi-v8'
 import { ScrollBox } from '@pixi/ui'
 import * as PIXI from 'pixi.js'
 
-export type Register = ((views: View[]) => void) | null
-
 export enum Style {
   Portrait,
   DesktopHorizon,

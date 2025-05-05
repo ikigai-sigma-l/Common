@@ -1,5 +1,5 @@
 import { System } from "../../core/System";
-import { View, Register } from "../../core/View";
+import { Layout, View } from "../../core/View";
 import { UnSubscribes } from "../../observable/Observable";
 import { ControlPanelPrefab } from "../../components/controlPanel/ControlPanelPrefab";
 import { SpinState, useGameUiStore } from "../../stores/useGameUiStore";
@@ -11,13 +11,17 @@ export class UiSystem extends System {
     private controlPanel: ControlPanelPrefab | null = null
     private InfoPanel: InfoPanelPrefab | null = null
 
-    public initial(register: Register) {
+    public initial() {
         const views: View[] = []
 
         views.push(...this.createControlPanel())
         views.push(...this.createInfoPanel())
         
-        if (register) register(views)
+        const root = this.getContainer()
+        views.forEach((view) => {
+            const container = view.getContainer()
+            if (container) root?.addChild(container)
+        })
 
         this.observer()
     }
@@ -30,6 +34,11 @@ export class UiSystem extends System {
 
         this.InfoPanel?.release()
         this.InfoPanel = null
+    }
+
+    public onDraw(layout: Layout): void {
+        this.controlPanel?.getViews().forEach((view) => view.onDraw(layout))
+        this.InfoPanel?.getViews().forEach((view) => view.onDraw(layout))
     }
 
     private observer() {
