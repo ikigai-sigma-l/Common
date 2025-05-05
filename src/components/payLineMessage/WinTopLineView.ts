@@ -164,16 +164,19 @@ export class WinTopLineView extends View {
     public align() {
         let width = 0
 
-        const message = this.getObject('message') as Sprite
+        const message = this.getObject('message') as Text
         if (message) width += message.width
 
-        const money = this.getObject('winMoney') as BitmapText
+        const money = this.getObject('winMoney') as Text
         if (money) width += this.gap + money.width
 
-        const currency = this.getObject('winCurrency') as BitmapText
+        const currency = this.getObject('winCurrency') as Text
         if (currency) width += this.gap + currency.width
 
         let start = width * -0.5
+
+        console.log(`[Sigma] 1.message = ${message?.height ?? 0}, money = ${money?.height ?? 0}, currency = ${currency?.height ?? 0}`)
+        console.log(`[Sigma] 2.message = ${message?.style.fontSize ?? 0}, money = ${money?.style.fontSize ?? 0}, currency = ${currency?.style.fontSize ?? 0}`)
 
         if (message) {
             message.position.set(start, ((money?.height ?? 0) - message.height) * 0.5)
