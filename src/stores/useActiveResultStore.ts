@@ -14,6 +14,7 @@ type ActiveResult = {
     getMaxBet: () => number
     getCurrency: () => CurrencyData
     getLanguage: (id: string) => string | null
+    getDepositURL: () => string
 }
 
 export const useActiveResultStore = create<ActiveResult>()(
@@ -206,6 +207,10 @@ export const useActiveResultStore = create<ActiveResult>()(
         getLanguage: (id: string) => {
           const lang = get()?.data?.languages
           return lang ? Object.entries(lang).find(([key, val]) => key === id)?.[1] : ''
+        },
+
+        getDepositURL: () => {
+          return get().data?.ui.urls.deposit ?? ''
         }
     }))
 )

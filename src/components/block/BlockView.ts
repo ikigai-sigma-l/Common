@@ -30,7 +30,7 @@ export class BlockView extends View {
         const graphics = this.getObject('block') as Graphics
         if (!graphics) return;
 
-        graphics.clear().rect(layout.width * - 0.5, layout.height * -0.5, layout.width * 2, layout.height * 2).fill({
+        graphics.clear().rect(0, 0, layout.width + layout.paddingX * 2, layout.height + layout.paddingY * 2).fill({
             color: 0x000000,
             alpha: 0.5,
         })

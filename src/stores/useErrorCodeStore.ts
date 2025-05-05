@@ -1,6 +1,7 @@
 import { language } from '../utility/Language'
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
+import { useActiveResultStore } from './useActiveResultStore'
 
 export enum ErrorType {
     MessageBox,
@@ -46,18 +47,27 @@ export const useErrorCodeStore = create<IErrorCodeStore>()(
                     }
                 case 10013:
                 case 12015:
-                    return {
+                    const setting = {
                         title: language.text('POPUP_INSUFFICIENT_FUNDS'),
                         content: language.text('POPUP_INSUFFICIENT_MESSAGE'),
                         btns: [{
                             message: language.text('POPUP_INSUFFICIENT_OK'),
                             onClick: () => { set({errorCode: 0}) }
-                        },{
-                            message: language.text('POPUP_INSUFFICIENT_DEPOSIT'),
-                            onClick: () => { console.error('not implement yet') }
                         }],
                         showClose: false
                     }
+
+                    const depositURL = useActiveResultStore.getState().getDepositURL()
+                    if (depositURL) {
+                        setting.btns.push({
+                            message: language.text('POPUP_INSUFFICIENT_DEPOSIT'),
+                            onClick: () => { 
+                                window.parent.location.href = depositURL
+                                window.parent.postMessage({ action: 'refresh', url: depositURL }, '*')
+                            }
+                        })
+                    }
+                    return setting
                 case 12001:
                 case 12002:
                 case 12003:
@@ -77,17 +87,6 @@ export const useErrorCodeStore = create<IErrorCodeStore>()(
                         title: language.text('POPUP_OOPS'),
                         content: language.text('POPUP_JURISDICTION_RESTRICTIONS'),
                         btns: []
-                    }
-
-                
-                case 500:
-                    return {
-                        title: 'Status Code 500',
-                        content: language.text('POPUP_SOMETHING_WRONG'),
-                        btns: [{
-                            message: language.text('POPUP_INSUFFICIENT_OK'),
-                            onClick: () => { set({errorCode: 0}) }
-                        }]
                     }
                 case 12005:
                     return {
@@ -121,21 +120,8 @@ export const useErrorCodeStore = create<IErrorCodeStore>()(
                 case 12014:
                 case 10013:
                 case 12015:
-                case 12001:
-                case 12002:
-                case 12003:
-                case 12004:
-                case 12010:
-                case 12011:
-                case 12012:
-                case 12013:
-                case 12016:
-                case 12019:
                     return ErrorType.MessageBox
-
-                case 500:
-                case 12005:
-                case 12006:
+                    
                 default:
                     return ErrorType.Malfunction
             }
