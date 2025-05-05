@@ -6,6 +6,7 @@ import { Payout } from '../../schame/BetResponse';
 import { formatNumber } from '../../utility/FormatUtility';
 import { useActiveResultStore } from '../../stores/useActiveResultStore';
 import { language } from '../../utility/Language';
+import { formatString } from '../../../src/utility/FormatUtility'
 
 
 export class WinBottomLineViewModel {
@@ -41,7 +42,7 @@ export class WinBottomLineViewModel {
         if (payout.length != 1) return
 
         const message = view.getObject('message') as PIXI.Text
-        if (message) message.text = language.text(`WIN_LINES_${payout[0].positions + 1}`)
+        if (message) message.text = formatString(language.text('WIN_LINES'), [payout[0].positions + 1])
     }
 
     private refreshWinMoney(view: WinBottomLineView, payout: Payout[]) {
